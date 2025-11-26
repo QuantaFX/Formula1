@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>F1-style Landing — Demo</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root{
+            --f1-red: #e10600;
+            --f1-dark: #0b0b0b;
+            --muted: #9aa3ad;
+        }
+
+        html,body{
+            height:100%
+        }
+
+        body{
+            font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+            background:var(--f1-dark); color:#fff;
+            -webkit-font-smoothing:antialiased;
+        }
+
+        .topbar{background:#060606; border-bottom:1px solid rgba(255,255,255,0.04); padding:.35rem 0}
+        .brand{font-weight:900; letter-spacing:1px; color:#fff; font-size:1.05rem}
+        .nav-link{color:rgba(255,255,255,0.85)}
+        .nav-link:hover{color:var(--f1-red)}
+
+        .live-strip{background:#090909; border-top:1px solid rgba(255,255,255,0.03); border-bottom:1px solid rgba(255,255,255,0.03); padding:.4rem 0; font-size:.9rem}
+        .live-pill{background:rgba(255,255,255,0.03); padding:.25rem .5rem; border-radius:999px; color:var(--muted); font-weight:600}
+
+        .carousel-item{height:60vh; min-height:320px; background-size:cover; background-position:center; position:relative}
+        .carousel-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,6,6,0.25), rgba(6,6,6,0.6));}
+        .hero-caption{position:absolute; left:2rem; bottom:3.5rem; z-index:2; max-width:720px}
+        .hero-title{font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight:800; margin-bottom:.3rem}
+        .hero-sub{color:var(--muted); margin-bottom:1rem}
+
+        section{padding:3.5rem 0}
+        .section-title{color:#fff; font-weight:700; margin-bottom:1rem}
+        .card-stat{background:#0f0f0f; border:1px solid rgba(255,255,255,0.04); border-radius:.5rem; padding:1rem}
+
+        .table thead th{border-bottom:1px solid rgba(255,255,255,0.06); color:var(--muted)}
+        .driver-name{font-weight:600}
+
+        .sponsor-slab{background:#070707; padding:1rem; border-radius:.5rem; display:flex; gap:1rem; align-items:center; justify-content:center}
+        .partner-svg{width:90px; height:34px; background:linear-gradient(90deg,#222,#111); border-radius:6px}
+
+        .card-stat .table.table-dark,
+        .card-stat .table.table-dark thead th,
+        .card-stat .table.table-dark tbody tr,
+        .card-stat .table.table-dark td {
+            background: transparent !important;
+            color: inherit !important;
+            border-color: rgba(255, 255, 255, 0.04) !important;
+        }
+
+        .team-redbull {
+            background: linear-gradient(0deg, #071b3f 0%, #002848 100%);
+        }
+        .team-ferrari {
+            background: linear-gradient(0deg, #2b0000 0%, #6b0000 100%);
+        }
+        .team-mclaren {
+            background: linear-gradient(0deg, #3a250c 0%, #b35000 100%);
+        }
+
+        footer{background:#040404; color:var(--muted); padding:2rem 0; border-top:1px solid rgba(255,255,255,0.03)}
+
+        @media (max-width:768px){
+            .hero-caption{left:1rem; right:1rem; bottom:2rem}
+        }
+
+    </style>
+</head>
+<body>
+
+<header class="topbar">
+    <nav class="container navbar navbar-expand-lg navbar-dark p-0">
+        <div class="container-fluid p-0">
+            <a class="navbar-brand brand d-flex align-items-center" href="#">
+                <svg width="100" height="40" viewBox="0 0 180 45" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false" style="margin-right:.6rem;display:inline-block;vertical-align:middle">
+                    <path d="M40.732 23.0579L22.8972 40.3607H0.149231L28.4512 12.2724C38.9728 1.85968 44.0451 0.150757 61.9847 0.150757H132.846L117.466 15.2086H64.0119C50.6086 15.2086 47.7562 16.2431 40.7278 23.0579H40.732ZM115.171 17.6128H64.3344C50.8348 17.6128 48.7237 18.6474 42.6001 24.7668L27.0062 40.3607H48.0996L53.1175 35.3429C56.4348 32.0256 57.9134 31.7114 64.5983 31.7114H101.072L115.171 17.6128ZM120.67 40.3607L160.989 0.150757H135.946L95.7359 40.3607H120.674H120.67Z" fill="#E10600"></path>
+                </svg>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link px-3" href="#news">News</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#standings">Standings</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#calendar">Calendar</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#drivers">Drivers</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-3 px-3" href="#tickets">Tickets</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container live-strip d-flex align-items-center gap-3">
+        <div class="live-pill">LIVE</div>
+        <div class="small text-white-50">Practice 2 — Silverstone · 12:30 GMT</div>
+        <div class="small text-white-50">|</div>
+        <div class="small text-white-50">Hamilton P1 · Verstappen P2 · Norris P3</div>
+    </div>
+</header>
+
+<section id="news">
+    <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1700&auto=format&fit=crop')">
+                <div class="carousel-overlay"></div>
+                <div class="hero-caption text-white">
+                    <div class="badge bg-danger mb-2">News</div>
+                    <h2 class="hero-title">Qualifying drama at Silverstone</h2>
+                    <p class="hero-sub">A late lap shuffle sets the grid as teams scramble with setup changes into race day.</p>
+                    <a class="btn btn-outline-light" href="#standings">Read more</a>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image:url('https://images.unsplash.com/photo-1542367597-9d2f0d6c7c6b?q=80&w=1700&auto=format&fit=crop')">
+                <div class="carousel-overlay"></div>
+                <div class="hero-caption text-white">
+                    <div class="badge bg-danger mb-2">Feature</div>
+                    <h2 class="hero-title">Inside the pitlane: aero updates explained</h2>
+                    <p class="hero-sub">How small wings and brake ducts can make big differences on track.</p>
+                    <a class="btn btn-outline-light" href="#calendar">Explore</a>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+</section>
+
+<section id="standings">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-3">
+            <h3 class="section-title">Drivers Championship</h3>
+            <div class="small text-white-50">Updated: Today</div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-lg-7">
+                <div class="card-stat">
+                    <div class="table-responsive">
+                        <table class="table table-dark table-borderless mb-0">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Driver</th>
+                                <th class="text-end">Points</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><span class="driver-name">Max Verstappen</span><div class="small text-white-50">Red Bull</div></td>
+                                <td class="text-end">320</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><span class="driver-name">Lewis Hamilton</span><div class="small text-white-50">Mercedes</div></td>
+                                <td class="text-end">264</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><span class="driver-name">Lando Norris</span><div class="small text-white-50">McLaren</div></td>
+                                <td class="text-end">210</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="card-stat mb-3">
+                    <h5 class="mb-2">Next Race</h5>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <div class="fw-bold">British GP</div>
+                            <div class="small text-white-50">Silverstone — 07 Jul</div>
+                        </div>
+                        <div class="text-end">
+                            <div class="small text-white-50">Circuit</div>
+                            <div class="fw-bold">5.891 km</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-stat">
+                    <h6 class="small text-white-50">Session Times</h6>
+                    <ul class="list-unstyled mb-0 small">
+                        <li>Practice 1 — 09:30 GMT</li>
+                        <li>Qualifying — 14:00 GMT</li>
+                        <li>Race — 15:00 GMT</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="calendar" class="bg-dark">
+    <div class="container">
+        <h3 class="section-title">Race Calendar</h3>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card-stat">
+                    <div class="fw-bold">Belgian GP</div>
+                    <div class="small text-white-50">Spa · 28 Jul</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-stat">
+                    <div class="fw-bold">Italian GP</div>
+                    <div class="small text-white-50">Monza · 04 Aug</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-stat">
+                    <div class="fw-bold">Singapore GP</div>
+                    <div class="small text-white-50">Marina Bay · 18 Sep</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="drivers">
+    <div class="container">
+        <h3 class="section-title">Featured Drivers</h3>
+        <div class="row g-3">
+            <div class="col-sm-6 col-md-3">
+                <div class="card-stat team-ferrari text-center">
+                    <div style="height:170px; background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/ferrari/lewham01/2025ferrarilewham01right.webp'); background-position: top center; background-size: cover;background-repeat: no-repeat;border-radius:6px;margin-bottom:.75rem;"></div>
+                    <div class="fw-bold">L. Hamilton</div>
+                    <div class="small text-white-50">Ferrari</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card-stat team-redbull text-center">
+                    <div style="height:170px; background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/redbullracing/maxver01/2025redbullracingmaxver01right.webp'); background-position: top center; background-size: cover;background-repeat: no-repeat;border-radius:6px;margin-bottom:.75rem;"></div>
+                    <div class="fw-bold">M. Verstappen</div>
+                    <div class="small text-white-50">Red Bull</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card-stat team-mclaren text-center">
+                    <div style="height:170px; background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/mclaren/lannor01/2025mclarenlannor01right.webp'); background-position: top center; background-size: cover;background-repeat: no-repeat;border-radius:6px;margin-bottom:.75rem;"></div>
+                    <div class="fw-bold">L. Norris</div>
+                    <div class="small text-white-50">McLaren</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card-stat team-ferrari text-center">
+                    <div style="height:170px; background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/ferrari/chalec01/2025ferrarichalec01right.webp'); background-position: top center; background-size: cover;background-repeat: no-repeat;border-radius:6px;margin-bottom:.75rem;"></div>
+                    <div class="fw-bold">C. Leclerc</div>
+                    <div class="small text-white-50">Ferrari</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="partners" class="bg-dark">
+    <div class="container">
+        <h3 class="section-title">Partners</h3>
+        <div class="row g-3">
+            <div class="col-6 col-md-3">
+                <div class="sponsor-slab"><div class="partner-svg"></div></div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="sponsor-slab"><div class="partner-svg"></div></div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="sponsor-slab"><div class="partner-svg"></div></div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="sponsor-slab"><div class="partner-svg"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <strong>F1</strong>
+                <div class="small">© <span id="year"></span> Formula one. All rights reserved.</div>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a class="text-decoration-none text-white-50 me-3" href="#">Privacy</a>
+                <a class="text-decoration-none text-white-50" href="#">Contact</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', function(e){
+            const t = document.querySelector(this.getAttribute('href'));
+            if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+        });
+    });
+
+    const carouselEl = document.querySelector('#newsCarousel');
+    if(carouselEl){
+        const carousel = bootstrap.Carousel.getOrCreateInstance(carouselEl, { interval: 6000, ride: 'carousel' });
+    }
+</script>
+</body>
+</html>
