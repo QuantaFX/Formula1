@@ -15,7 +15,6 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
 
-// SETUP CAMERA
 const camera = new THREE.PerspectiveCamera(35, (container.clientWidth * 0.8) / (container.clientHeight * 0.8), 0.01, 100);
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -23,7 +22,7 @@ camera.position.set(0, 0.07, 0);
 controls.target.set(0, 0, 0);
 controls.autoRotate = false;
 controls.autoRotateSpeed = 1;
-controls.enableZoom = false; // Optional: disable zoom to keep the car size consistent
+controls.enableZoom = false;
 controls.update();
 
 const scene = new THREE.Scene();
@@ -65,7 +64,6 @@ function animate() {
 }
 
 window.addEventListener('resize', () => {
-    // Resize camera aspect ratio and renderer size to the new window size
     camera.aspect = (container.clientWidth * 0.8) / (container.clientHeight * 0.8);
     camera.updateProjectionMatrix();
     renderer.setSize(container.clientWidth * 0.8, container.clientHeight * 0.8);
