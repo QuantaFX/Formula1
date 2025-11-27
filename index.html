@@ -4,67 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>F1-style Landing — Demo</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        :root{--f1-red: #e10600;--f1-dark: #0b0b0b;--muted: #9aa3ad;}
-
-        html,body{height:100%}
-
-        body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;background:var(--f1-dark); color:#fff;-webkit-font-smoothing:antialiased;}
-
-        .topbar{background:#060606; border-bottom:1px solid rgba(255,255,255,0.04); padding:.35rem 0}
-        .brand{font-weight:900; letter-spacing:1px; color:#fff; font-size:1.05rem}
-        .nav-link{color:rgba(255,255,255,0.85)}
-        .nav-link:hover{color:var(--f1-red)}
-
-        .live-strip{background:#090909; border-top:1px solid rgba(255,255,255,0.03); border-bottom:1px solid rgba(255,255,255,0.03); padding:.4rem 0; font-size:.9rem}
-        .live-pill{background:rgba(255,255,255,0.03); padding:.25rem .5rem; border-radius:999px; color:var(--muted); font-weight:600}
-
-        .carousel-item{height:60vh; min-height:320px; background-size:cover; background-position:center; position:relative}
-        .carousel-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,6,6,0.25), rgba(6,6,6,0.6));}
-        .hero-caption{position:absolute; left:2rem; bottom:3.5rem; z-index:2; max-width:720px}
-        .hero-title{font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight:800; margin-bottom:.3rem}
-        .hero-sub{color:var(--muted); margin-bottom:1rem}
-
-        section{padding:3.5rem 0}
-        .section-title{color:#fff; font-weight:700; margin-bottom:1rem}
-        .card-stat{background:#0f0f0f; border:1px solid rgba(255,255,255,0.04); border-radius:.5rem; padding:1rem}
-
-        .table thead th{border-bottom:1px solid rgba(255,255,255,0.06); color:var(--muted)}
-        .driver-name{font-weight:600}
-
-        .sponsor-slab{background:#070707; padding:1rem; border-radius:.5rem; display:flex; gap:1rem; align-items:center; justify-content:center}
-
-        .card-stat .table.table-dark,
-        .card-stat .table.table-dark thead th,
-        .card-stat .table.table-dark tbody tr,
-        .card-stat .table.table-dark td { background: transparent !important;color: inherit !important;border-color: rgba(255, 255, 255, 0.04) !important;}
-
-        .team-redbull {background: linear-gradient(0deg, #071b3f 0%, #002848 100%);}
-        .team-ferrari {background: linear-gradient(0deg, #2b0000 0%, #6b0000 100%);}
-        .team-mclaren {background: linear-gradient(0deg, #3a250c 0%, #b35000 100%);}
-
-        .partner-svg{width:90px;height:34px;border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px;box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);}
-        .partner-svg img.partner-logo{max-width:100%;max-height:100%;object-fit:contain;display:block;}
-
-        #calendar {position: relative;}
-        #calendar .geo-bg-wrapper {position: absolute;inset: 0;overflow: hidden;pointer-events: none;z-index: 0;}
-        #calendar .geo-bg {position: absolute;right: 0;top: 0;bottom: 0;opacity: 0.15;width: 100%;height: 100%;opacity: 0.15}
-        #calendar .geo-bg svg path {fill: rgba(255,255,255,0.2) !important;transition: fill .2s;}
-        #calendar .container { position: relative; z-index: 1; }
-
-        footer{background:#040404; color:var(--muted); padding:2rem 0; border-top:1px solid rgba(255,255,255,0.03)}
-
-        @media (max-width:768px){
-            .hero-caption{left:1rem; right:1rem; bottom:2rem}
-        }
-
-    </style>
+    <link href="css/index.css" rel="stylesheet">
 </head>
 <body>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+</script>
 
 <header class="topbar">
     <nav class="container navbar navbar-expand-lg navbar-dark p-0">
@@ -100,35 +53,16 @@
 </header>
 
 <section id="news">
-    <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1700&auto=format&fit=crop')">
-                <div class="carousel-overlay"></div>
-                <div class="hero-caption text-white">
-                    <div class="badge bg-danger mb-2">News</div>
-                    <h2 class="hero-title">Qualifying drama at Silverstone</h2>
-                    <p class="hero-sub">A late lap shuffle sets the grid as teams scramble with setup changes into race day.</p>
-                    <a class="btn btn-outline-light" href="#standings">Read more</a>
-                </div>
-            </div>
-            <div class="carousel-item" style="background-image:url('https://images.unsplash.com/photo-1542367597-9d2f0d6c7c6b?q=80&w=1700&auto=format&fit=crop')">
-                <div class="carousel-overlay"></div>
-                <div class="hero-caption text-white">
-                    <div class="badge bg-danger mb-2">Feature</div>
-                    <h2 class="hero-title">Inside the pitlane: aero updates explained</h2>
-                    <p class="hero-sub">How small wings and brake ducts can make big differences on track.</p>
-                    <a class="btn btn-outline-light" href="#calendar">Explore</a>
-                </div>
-            </div>
+    <section id="hero-3d">
+        <div id="f1-canvas-container">
+            <canvas id="f1-canvas"></canvas>
         </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-    </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-caption">
+            <h1 class="display-4 fw-bold text-white mb-3">Formula 1 2024</h1>
+            <p class="lead text-white-50">Experience the thrill of Formula 1 racing</p>
+        </div>
+    </section>
 </section>
 
 <section id="standings">
@@ -201,7 +135,6 @@
 </section>
 
 <section id="calendar" class="bg-dark">
-
     <div class="geo-bg-wrapper">
         <div class="geo-bg" aria-hidden="true">
             <svg width="100%" height="100%" viewBox="0 0 604 604" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
@@ -236,35 +169,81 @@
 </section>
 
 <section id="drivers">
+
     <div class="container">
         <h3 class="section-title">Featured Drivers</h3>
         <div class="row g-3">
-            <div class="col-sm-6 col-md-3">
+
+            <div class="col-sm-6 col-md-3 driver-card">
                 <div class="card-stat team-ferrari text-center">
-                    <div style="height:170px; background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/ferrari/lewham01/2025ferrarilewham01right.webp'); background-position: top center; background-size: cover;background-repeat: no-repeat;border-radius:6px;margin-bottom:.75rem;"></div>
-                    <div class="fw-bold">L. Hamilton</div>
-                    <div class="small text-white-50">Ferrari</div>
+                    <div class="geo-bg-wrapper">
+                        <div class="geo-bg" aria-hidden="true">
+                            <svg width="100%" height="100%" viewBox="0 0 604 604" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                                <g class="colors-module_fill_colour-static-static-1__29U2y"><path d="M498.887 64.6914L563.251 0.324951H547.162L482.793 64.6914H498.887Z"></path><path d="M373.131 138.985H389.222L463.51 64.6914H447.422L373.131 138.985Z"></path><path d="M539.408 94.5181H507.037L398.811 202.749H431.181L539.408 94.5181Z"></path><path d="M502.781 94.5181H468.244L360.024 202.742H349.31L210.479 341.581H221.802L360.629 202.749H394.555L502.781 94.5181Z"></path><path d="M267.781 370.643L376.011 262.417H341.469L233.243 370.643H267.781Z"></path><path d="M90.6777 237.31L283.362 44.6238H248.82L56.1357 237.31H90.6777Z"></path><path d="M87.8858 112.728L200.286 0.324951H183.117L70.7139 112.728H87.8858Z"></path><path d="M545.048 0.324951H527.878L463.51 64.6914H480.682L545.048 0.324951Z"></path><path d="M0 282.12V293.438L56.1353 237.31H44.8123L0 282.12Z"></path><path d="M353.848 138.985H371.017L445.311 64.6914H428.139L353.848 138.985Z"></path><path d="M30.5937 308.631L0 339.225V355.318L46.6874 308.631H30.5937Z"></path><path d="M279.76 155.594H255.605L3.58594 407.605H27.7468L279.76 155.594Z"></path><path d="M0 180.65V196.742L65.027 131.713H48.9354L0 180.65Z"></path><path d="M94.9258 237.31H127.297L319.98 44.6238H287.612L94.9258 237.31Z"></path><path d="M0 319.943V337.113L28.4821 308.631H11.3102L0 319.943Z"></path><path d="M196.664 380.474L86.1133 491.025H97.4362L207.987 380.474H196.664Z"></path><path d="M31.2457 237.31L0 268.555V280.635L43.325 237.31H31.2457Z"></path><path d="M269.289 204.999H278.292L344.305 138.985H335.303L269.289 204.999Z"></path><path d="M151.994 341.575L218.008 275.563H209.005L142.998 341.575H151.994Z"></path><path d="M279.4 204.999H287.834L353.848 138.985H345.412L279.4 204.999Z"></path><path d="M603.206 402.161H591.889L500.253 493.797H511.569L603.206 402.161Z"></path><path d="M93.5768 548.891L38.1426 604.325H54.2342L109.664 548.891H93.5768Z"></path><path d="M558.188 382.925L604 337.113V319.943L541.022 382.925H558.188Z"></path><path d="M587.604 298.54H598.926L604 293.466V282.143L587.604 298.54Z"></path><path d="M604 339.225L560.3 382.925H576.394L604 355.318V339.225Z"></path><path d="M54.2343 0.324951H38.1427L19.2832 19.1844H35.3769L54.2343 0.324951Z"></path><path d="M88.214 0.324951H79.2115L29.6816 49.8548H38.6842L88.214 0.324951Z"></path><path d="M29.6817 49.8547H18.3651L0 68.2199V79.5364L29.6817 49.8547Z"></path><path d="M0 54.6532V66.7283L16.8736 49.8547H4.80064L0 54.6532Z"></path><path d="M486.686 493.797H498.761L590.397 402.161H578.324L486.686 493.797Z"></path><path d="M204.68 454.276L130.393 528.569H146.48L220.767 454.282H232.847L316.486 370.643H304.404L220.772 454.276H204.68Z"></path><path d="M314.366 434.956L144.999 604.325H161.093L330.46 434.956H314.366Z"></path><path d="M380.262 262.417L272.036 370.643H304.405L412.631 262.417H380.262Z"></path><path d="M268.638 581.3H291.277L574.037 298.54H551.398L268.638 581.3Z"></path><path d="M74.2936 548.891L18.8594 604.325H36.0292L91.457 548.891H74.2936Z"></path><path d="M375.214 545.341L525.362 395.2H508.192L358.049 545.341H375.214Z"></path><path d="M574.037 298.54H586.119L604 280.658V268.579L574.037 298.54Z"></path><path d="M317.971 370.643L234.332 454.282H245.655L329.294 370.643H317.971Z"></path><path d="M295.083 434.956L125.716 604.325H142.886L312.254 434.956H295.083Z"></path><path d="M282.737 155.594L30.7197 407.605H53.3592L305.377 155.594H282.737Z"></path><path d="M143.934 548.605H134.932L79.2119 604.325H88.2144L143.934 548.605Z"></path><path d="M223.311 581.3H206.139L183.116 604.325H200.286L223.311 581.3Z"></path><path d="M0 161.367V178.535L46.8216 131.713H29.6519L0 161.367Z"></path><path d="M527.475 395.2L377.326 545.341H393.42L543.567 395.2H527.475Z"></path><path d="M548.428 298.54H524.267L241.511 581.3H265.667L548.428 298.54Z"></path><path d="M241.511 581.3H225.423L202.4 604.325H218.49L241.511 581.3Z"></path><path d="M72.5486 491.025H84.628L195.179 380.474H183.1L72.5465 491.025H56.4591L0 547.487V563.576L72.5486 491.025Z"></path><path d="M39.792 49.8548H48.232L97.7576 0.324951H89.3219L39.792 49.8548Z"></path><path d="M106.06 19.9813H123.231L142.886 0.324951H125.716L106.06 19.9813Z"></path><path d="M54.3475 491.025H37.1756L0 528.203V545.373L54.3475 491.025Z"></path><path d="M604 493.574V484.573L548.05 540.523H557.052L604 493.574Z"></path><path d="M558.16 540.523H566.594L603.999 503.117V494.684L558.16 540.523Z"></path><path d="M604.001 563.576V547.487L547.162 604.325H563.254L604.001 563.576Z"></path><path d="M36.0293 0.324951H18.8595L0 19.1844H17.1698L36.0293 0.324951Z"></path><path d="M604 545.373V528.203L527.878 604.325H545.048L604 545.373Z"></path><path d="M418.31 545.341H406.987L348.007 604.325H359.326L418.31 545.341Z"></path><path d="M591.19 460.129H579.117L434.917 604.325H446.996L591.19 460.129Z"></path><path d="M405.502 545.341H393.42L334.44 604.325H346.518L405.502 545.341Z"></path><path d="M604 460.129H592.681L448.483 604.325H459.804L604 460.129Z"></path><path d="M125.343 19.9813H141.437L161.093 0.324951H144.999L125.343 19.9813Z"></path><path d="M153.473 548.605H145.04L89.3223 604.325H97.758L153.473 548.605Z"></path><path d="M119.916 418.579L196.914 341.575H180.826L103.822 418.579H115.269H119.916Z"></path><path d="M202.566 454.276H185.397L111.109 528.57H128.279L202.566 454.276Z"></path><path d="M527.54 225.068H515.46L379.864 360.669H391.946L527.54 225.068Z"></path><path d="M347.825 202.742H335.746L196.913 341.575L208.995 341.581L347.825 202.742Z"></path><path d="M66.0135 418.562L0 484.573V493.574L75.0097 418.562H66.0135Z"></path><path d="M514.867 187.952L440.58 262.246H456.667L530.961 187.952H514.867Z"></path><path d="M76.1219 418.562L0 494.684V503.118L84.5555 418.562H76.1219Z"></path><path d="M219.116 275.563L153.103 341.575H161.543L227.556 275.563H219.116Z"></path><path d="M178.712 341.575H161.543L84.5557 418.562L101.708 418.579L178.712 341.575Z"></path><path d="M328.425 19.9068H339.741L359.323 0.324951H348.007L328.425 19.9068Z"></path><path d="M89.9971 112.728H106.091L218.489 0.324951H202.4L89.9971 112.728Z"></path><path d="M324.832 110.407H336.914L446.996 0.324951H434.919L324.832 110.407Z"></path><path d="M338.399 110.407H349.722L459.805 0.324951H448.484L338.399 110.407Z"></path><path d="M314.858 19.9068H326.933L346.515 0.324951H334.44L314.858 19.9068Z"></path><path d="M484.268 187.952H495.584L604 79.5365V68.22L484.268 187.952Z"></path><path d="M438.46 262.246L512.754 187.952H495.584L421.297 262.246H438.46Z"></path><path d="M470.701 187.952H482.776L604 66.7284V54.6533L470.701 187.952Z"></path><path d="M559.591 225.087H575.685L604 196.769V180.674L559.591 225.087Z"></path><path d="M540.331 225.088H557.477L604 178.56V161.395L540.324 225.068H529.025L393.431 360.669H404.747L540.331 225.088Z"></path></g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-media" style=background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/ferrari/lewham01/2025ferrarilewham01right.webp');"></div>
+                    <div class="card-gradient"></div>
+                    <div class="driver-name">
+                        <div class="fw-bold">L. Hamilton</div>
+                        <div class="small text-white">Ferrari</div>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-3">
+
+            <div class="col-sm-6 col-md-3 driver-card">
                 <div class="card-stat team-redbull text-center">
-                    <div style="height:170px; background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/redbullracing/maxver01/2025redbullracingmaxver01right.webp'); background-position: top center; background-size: cover;background-repeat: no-repeat;border-radius:6px;margin-bottom:.75rem;"></div>
-                    <div class="fw-bold">M. Verstappen</div>
-                    <div class="small text-white-50">Red Bull</div>
+                    <div class="geo-bg-wrapper">
+                        <div class="geo-bg" aria-hidden="true">
+                            <svg width="100%" height="100%" viewBox="0 0 604 604" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                                <g class="colors-module_fill_colour-static-static-1__29U2y"><path d="M498.887 64.6914L563.251 0.324951H547.162L482.793 64.6914H498.887Z"></path><path d="M373.131 138.985H389.222L463.51 64.6914H447.422L373.131 138.985Z"></path><path d="M539.408 94.5181H507.037L398.811 202.749H431.181L539.408 94.5181Z"></path><path d="M502.781 94.5181H468.244L360.024 202.742H349.31L210.479 341.581H221.802L360.629 202.749H394.555L502.781 94.5181Z"></path><path d="M267.781 370.643L376.011 262.417H341.469L233.243 370.643H267.781Z"></path><path d="M90.6777 237.31L283.362 44.6238H248.82L56.1357 237.31H90.6777Z"></path><path d="M87.8858 112.728L200.286 0.324951H183.117L70.7139 112.728H87.8858Z"></path><path d="M545.048 0.324951H527.878L463.51 64.6914H480.682L545.048 0.324951Z"></path><path d="M0 282.12V293.438L56.1353 237.31H44.8123L0 282.12Z"></path><path d="M353.848 138.985H371.017L445.311 64.6914H428.139L353.848 138.985Z"></path><path d="M30.5937 308.631L0 339.225V355.318L46.6874 308.631H30.5937Z"></path><path d="M279.76 155.594H255.605L3.58594 407.605H27.7468L279.76 155.594Z"></path><path d="M0 180.65V196.742L65.027 131.713H48.9354L0 180.65Z"></path><path d="M94.9258 237.31H127.297L319.98 44.6238H287.612L94.9258 237.31Z"></path><path d="M0 319.943V337.113L28.4821 308.631H11.3102L0 319.943Z"></path><path d="M196.664 380.474L86.1133 491.025H97.4362L207.987 380.474H196.664Z"></path><path d="M31.2457 237.31L0 268.555V280.635L43.325 237.31H31.2457Z"></path><path d="M269.289 204.999H278.292L344.305 138.985H335.303L269.289 204.999Z"></path><path d="M151.994 341.575L218.008 275.563H209.005L142.998 341.575H151.994Z"></path><path d="M279.4 204.999H287.834L353.848 138.985H345.412L279.4 204.999Z"></path><path d="M603.206 402.161H591.889L500.253 493.797H511.569L603.206 402.161Z"></path><path d="M93.5768 548.891L38.1426 604.325H54.2342L109.664 548.891H93.5768Z"></path><path d="M558.188 382.925L604 337.113V319.943L541.022 382.925H558.188Z"></path><path d="M587.604 298.54H598.926L604 293.466V282.143L587.604 298.54Z"></path><path d="M604 339.225L560.3 382.925H576.394L604 355.318V339.225Z"></path><path d="M54.2343 0.324951H38.1427L19.2832 19.1844H35.3769L54.2343 0.324951Z"></path><path d="M88.214 0.324951H79.2115L29.6816 49.8548H38.6842L88.214 0.324951Z"></path><path d="M29.6817 49.8547H18.3651L0 68.2199V79.5364L29.6817 49.8547Z"></path><path d="M0 54.6532V66.7283L16.8736 49.8547H4.80064L0 54.6532Z"></path><path d="M486.686 493.797H498.761L590.397 402.161H578.324L486.686 493.797Z"></path><path d="M204.68 454.276L130.393 528.569H146.48L220.767 454.282H232.847L316.486 370.643H304.404L220.772 454.276H204.68Z"></path><path d="M314.366 434.956L144.999 604.325H161.093L330.46 434.956H314.366Z"></path><path d="M380.262 262.417L272.036 370.643H304.405L412.631 262.417H380.262Z"></path><path d="M268.638 581.3H291.277L574.037 298.54H551.398L268.638 581.3Z"></path><path d="M74.2936 548.891L18.8594 604.325H36.0292L91.457 548.891H74.2936Z"></path><path d="M375.214 545.341L525.362 395.2H508.192L358.049 545.341H375.214Z"></path><path d="M574.037 298.54H586.119L604 280.658V268.579L574.037 298.54Z"></path><path d="M317.971 370.643L234.332 454.282H245.655L329.294 370.643H317.971Z"></path><path d="M295.083 434.956L125.716 604.325H142.886L312.254 434.956H295.083Z"></path><path d="M282.737 155.594L30.7197 407.605H53.3592L305.377 155.594H282.737Z"></path><path d="M143.934 548.605H134.932L79.2119 604.325H88.2144L143.934 548.605Z"></path><path d="M223.311 581.3H206.139L183.116 604.325H200.286L223.311 581.3Z"></path><path d="M0 161.367V178.535L46.8216 131.713H29.6519L0 161.367Z"></path><path d="M527.475 395.2L377.326 545.341H393.42L543.567 395.2H527.475Z"></path><path d="M548.428 298.54H524.267L241.511 581.3H265.667L548.428 298.54Z"></path><path d="M241.511 581.3H225.423L202.4 604.325H218.49L241.511 581.3Z"></path><path d="M72.5486 491.025H84.628L195.179 380.474H183.1L72.5465 491.025H56.4591L0 547.487V563.576L72.5486 491.025Z"></path><path d="M39.792 49.8548H48.232L97.7576 0.324951H89.3219L39.792 49.8548Z"></path><path d="M106.06 19.9813H123.231L142.886 0.324951H125.716L106.06 19.9813Z"></path><path d="M54.3475 491.025H37.1756L0 528.203V545.373L54.3475 491.025Z"></path><path d="M604 493.574V484.573L548.05 540.523H557.052L604 493.574Z"></path><path d="M558.16 540.523H566.594L603.999 503.117V494.684L558.16 540.523Z"></path><path d="M604.001 563.576V547.487L547.162 604.325H563.254L604.001 563.576Z"></path><path d="M36.0293 0.324951H18.8595L0 19.1844H17.1698L36.0293 0.324951Z"></path><path d="M604 545.373V528.203L527.878 604.325H545.048L604 545.373Z"></path><path d="M418.31 545.341H406.987L348.007 604.325H359.326L418.31 545.341Z"></path><path d="M591.19 460.129H579.117L434.917 604.325H446.996L591.19 460.129Z"></path><path d="M405.502 545.341H393.42L334.44 604.325H346.518L405.502 545.341Z"></path><path d="M604 460.129H592.681L448.483 604.325H459.804L604 460.129Z"></path><path d="M125.343 19.9813H141.437L161.093 0.324951H144.999L125.343 19.9813Z"></path><path d="M153.473 548.605H145.04L89.3223 604.325H97.758L153.473 548.605Z"></path><path d="M119.916 418.579L196.914 341.575H180.826L103.822 418.579H115.269H119.916Z"></path><path d="M202.566 454.276H185.397L111.109 528.57H128.279L202.566 454.276Z"></path><path d="M527.54 225.068H515.46L379.864 360.669H391.946L527.54 225.068Z"></path><path d="M347.825 202.742H335.746L196.913 341.575L208.995 341.581L347.825 202.742Z"></path><path d="M66.0135 418.562L0 484.573V493.574L75.0097 418.562H66.0135Z"></path><path d="M514.867 187.952L440.58 262.246H456.667L530.961 187.952H514.867Z"></path><path d="M76.1219 418.562L0 494.684V503.118L84.5555 418.562H76.1219Z"></path><path d="M219.116 275.563L153.103 341.575H161.543L227.556 275.563H219.116Z"></path><path d="M178.712 341.575H161.543L84.5557 418.562L101.708 418.579L178.712 341.575Z"></path><path d="M328.425 19.9068H339.741L359.323 0.324951H348.007L328.425 19.9068Z"></path><path d="M89.9971 112.728H106.091L218.489 0.324951H202.4L89.9971 112.728Z"></path><path d="M324.832 110.407H336.914L446.996 0.324951H434.919L324.832 110.407Z"></path><path d="M338.399 110.407H349.722L459.805 0.324951H448.484L338.399 110.407Z"></path><path d="M314.858 19.9068H326.933L346.515 0.324951H334.44L314.858 19.9068Z"></path><path d="M484.268 187.952H495.584L604 79.5365V68.22L484.268 187.952Z"></path><path d="M438.46 262.246L512.754 187.952H495.584L421.297 262.246H438.46Z"></path><path d="M470.701 187.952H482.776L604 66.7284V54.6533L470.701 187.952Z"></path><path d="M559.591 225.087H575.685L604 196.769V180.674L559.591 225.087Z"></path><path d="M540.331 225.088H557.477L604 178.56V161.395L540.324 225.068H529.025L393.431 360.669H404.747L540.331 225.088Z"></path></g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/redbullracing/maxver01/2025redbullracingmaxver01right.webp');"></div>
+                    <div class="card-gradient"></div>
+                    <div class="driver-name">
+                        <div class="fw-bold">M. Verstappen</div>
+                        <div class="small text-white">Red Bull</div>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 driver-card">
                 <div class="card-stat team-mclaren text-center">
-                    <div style="height:170px; background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/mclaren/lannor01/2025mclarenlannor01right.webp'); background-position: top center; background-size: cover;background-repeat: no-repeat;border-radius:6px;margin-bottom:.75rem;"></div>
-                    <div class="fw-bold">L. Norris</div>
-                    <div class="small text-white-50">McLaren</div>
+                    <div class="geo-bg-wrapper">
+                        <div class="geo-bg" aria-hidden="true">
+                            <svg width="100%" height="100%" viewBox="0 0 604 604" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                                <g class="colors-module_fill_colour-static-static-1__29U2y"><path d="M498.887 64.6914L563.251 0.324951H547.162L482.793 64.6914H498.887Z"></path><path d="M373.131 138.985H389.222L463.51 64.6914H447.422L373.131 138.985Z"></path><path d="M539.408 94.5181H507.037L398.811 202.749H431.181L539.408 94.5181Z"></path><path d="M502.781 94.5181H468.244L360.024 202.742H349.31L210.479 341.581H221.802L360.629 202.749H394.555L502.781 94.5181Z"></path><path d="M267.781 370.643L376.011 262.417H341.469L233.243 370.643H267.781Z"></path><path d="M90.6777 237.31L283.362 44.6238H248.82L56.1357 237.31H90.6777Z"></path><path d="M87.8858 112.728L200.286 0.324951H183.117L70.7139 112.728H87.8858Z"></path><path d="M545.048 0.324951H527.878L463.51 64.6914H480.682L545.048 0.324951Z"></path><path d="M0 282.12V293.438L56.1353 237.31H44.8123L0 282.12Z"></path><path d="M353.848 138.985H371.017L445.311 64.6914H428.139L353.848 138.985Z"></path><path d="M30.5937 308.631L0 339.225V355.318L46.6874 308.631H30.5937Z"></path><path d="M279.76 155.594H255.605L3.58594 407.605H27.7468L279.76 155.594Z"></path><path d="M0 180.65V196.742L65.027 131.713H48.9354L0 180.65Z"></path><path d="M94.9258 237.31H127.297L319.98 44.6238H287.612L94.9258 237.31Z"></path><path d="M0 319.943V337.113L28.4821 308.631H11.3102L0 319.943Z"></path><path d="M196.664 380.474L86.1133 491.025H97.4362L207.987 380.474H196.664Z"></path><path d="M31.2457 237.31L0 268.555V280.635L43.325 237.31H31.2457Z"></path><path d="M269.289 204.999H278.292L344.305 138.985H335.303L269.289 204.999Z"></path><path d="M151.994 341.575L218.008 275.563H209.005L142.998 341.575H151.994Z"></path><path d="M279.4 204.999H287.834L353.848 138.985H345.412L279.4 204.999Z"></path><path d="M603.206 402.161H591.889L500.253 493.797H511.569L603.206 402.161Z"></path><path d="M93.5768 548.891L38.1426 604.325H54.2342L109.664 548.891H93.5768Z"></path><path d="M558.188 382.925L604 337.113V319.943L541.022 382.925H558.188Z"></path><path d="M587.604 298.54H598.926L604 293.466V282.143L587.604 298.54Z"></path><path d="M604 339.225L560.3 382.925H576.394L604 355.318V339.225Z"></path><path d="M54.2343 0.324951H38.1427L19.2832 19.1844H35.3769L54.2343 0.324951Z"></path><path d="M88.214 0.324951H79.2115L29.6816 49.8548H38.6842L88.214 0.324951Z"></path><path d="M29.6817 49.8547H18.3651L0 68.2199V79.5364L29.6817 49.8547Z"></path><path d="M0 54.6532V66.7283L16.8736 49.8547H4.80064L0 54.6532Z"></path><path d="M486.686 493.797H498.761L590.397 402.161H578.324L486.686 493.797Z"></path><path d="M204.68 454.276L130.393 528.569H146.48L220.767 454.282H232.847L316.486 370.643H304.404L220.772 454.276H204.68Z"></path><path d="M314.366 434.956L144.999 604.325H161.093L330.46 434.956H314.366Z"></path><path d="M380.262 262.417L272.036 370.643H304.405L412.631 262.417H380.262Z"></path><path d="M268.638 581.3H291.277L574.037 298.54H551.398L268.638 581.3Z"></path><path d="M74.2936 548.891L18.8594 604.325H36.0292L91.457 548.891H74.2936Z"></path><path d="M375.214 545.341L525.362 395.2H508.192L358.049 545.341H375.214Z"></path><path d="M574.037 298.54H586.119L604 280.658V268.579L574.037 298.54Z"></path><path d="M317.971 370.643L234.332 454.282H245.655L329.294 370.643H317.971Z"></path><path d="M295.083 434.956L125.716 604.325H142.886L312.254 434.956H295.083Z"></path><path d="M282.737 155.594L30.7197 407.605H53.3592L305.377 155.594H282.737Z"></path><path d="M143.934 548.605H134.932L79.2119 604.325H88.2144L143.934 548.605Z"></path><path d="M223.311 581.3H206.139L183.116 604.325H200.286L223.311 581.3Z"></path><path d="M0 161.367V178.535L46.8216 131.713H29.6519L0 161.367Z"></path><path d="M527.475 395.2L377.326 545.341H393.42L543.567 395.2H527.475Z"></path><path d="M548.428 298.54H524.267L241.511 581.3H265.667L548.428 298.54Z"></path><path d="M241.511 581.3H225.423L202.4 604.325H218.49L241.511 581.3Z"></path><path d="M72.5486 491.025H84.628L195.179 380.474H183.1L72.5465 491.025H56.4591L0 547.487V563.576L72.5486 491.025Z"></path><path d="M39.792 49.8548H48.232L97.7576 0.324951H89.3219L39.792 49.8548Z"></path><path d="M106.06 19.9813H123.231L142.886 0.324951H125.716L106.06 19.9813Z"></path><path d="M54.3475 491.025H37.1756L0 528.203V545.373L54.3475 491.025Z"></path><path d="M604 493.574V484.573L548.05 540.523H557.052L604 493.574Z"></path><path d="M558.16 540.523H566.594L603.999 503.117V494.684L558.16 540.523Z"></path><path d="M604.001 563.576V547.487L547.162 604.325H563.254L604.001 563.576Z"></path><path d="M36.0293 0.324951H18.8595L0 19.1844H17.1698L36.0293 0.324951Z"></path><path d="M604 545.373V528.203L527.878 604.325H545.048L604 545.373Z"></path><path d="M418.31 545.341H406.987L348.007 604.325H359.326L418.31 545.341Z"></path><path d="M591.19 460.129H579.117L434.917 604.325H446.996L591.19 460.129Z"></path><path d="M405.502 545.341H393.42L334.44 604.325H346.518L405.502 545.341Z"></path><path d="M604 460.129H592.681L448.483 604.325H459.804L604 460.129Z"></path><path d="M125.343 19.9813H141.437L161.093 0.324951H144.999L125.343 19.9813Z"></path><path d="M153.473 548.605H145.04L89.3223 604.325H97.758L153.473 548.605Z"></path><path d="M119.916 418.579L196.914 341.575H180.826L103.822 418.579H115.269H119.916Z"></path><path d="M202.566 454.276H185.397L111.109 528.57H128.279L202.566 454.276Z"></path><path d="M527.54 225.068H515.46L379.864 360.669H391.946L527.54 225.068Z"></path><path d="M347.825 202.742H335.746L196.913 341.575L208.995 341.581L347.825 202.742Z"></path><path d="M66.0135 418.562L0 484.573V493.574L75.0097 418.562H66.0135Z"></path><path d="M514.867 187.952L440.58 262.246H456.667L530.961 187.952H514.867Z"></path><path d="M76.1219 418.562L0 494.684V503.118L84.5555 418.562H76.1219Z"></path><path d="M219.116 275.563L153.103 341.575H161.543L227.556 275.563H219.116Z"></path><path d="M178.712 341.575H161.543L84.5557 418.562L101.708 418.579L178.712 341.575Z"></path><path d="M328.425 19.9068H339.741L359.323 0.324951H348.007L328.425 19.9068Z"></path><path d="M89.9971 112.728H106.091L218.489 0.324951H202.4L89.9971 112.728Z"></path><path d="M324.832 110.407H336.914L446.996 0.324951H434.919L324.832 110.407Z"></path><path d="M338.399 110.407H349.722L459.805 0.324951H448.484L338.399 110.407Z"></path><path d="M314.858 19.9068H326.933L346.515 0.324951H334.44L314.858 19.9068Z"></path><path d="M484.268 187.952H495.584L604 79.5365V68.22L484.268 187.952Z"></path><path d="M438.46 262.246L512.754 187.952H495.584L421.297 262.246H438.46Z"></path><path d="M470.701 187.952H482.776L604 66.7284V54.6533L470.701 187.952Z"></path><path d="M559.591 225.087H575.685L604 196.769V180.674L559.591 225.087Z"></path><path d="M540.331 225.088H557.477L604 178.56V161.395L540.324 225.068H529.025L393.431 360.669H404.747L540.331 225.088Z"></path></g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/mclaren/lannor01/2025mclarenlannor01right.webp')"></div>
+                    <div class="card-gradient"></div>
+                    <div class="driver-name">
+                        <div class="fw-bold">L. Norris</div>
+                        <div class="small text-white">McLaren</div>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 driver-card">
                 <div class="card-stat team-ferrari text-center">
-                    <div style="height:170px; background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/ferrari/chalec01/2025ferrarichalec01right.webp'); background-position: top center; background-size: cover;background-repeat: no-repeat;border-radius:6px;margin-bottom:.75rem;"></div>
-                    <div class="fw-bold">C. Leclerc</div>
-                    <div class="small text-white-50">Ferrari</div>
+                    <div class="geo-bg-wrapper">
+                        <div class="geo-bg" aria-hidden="true">
+                            <svg width="100%" height="100%" viewBox="0 0 604 604" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+                                <g class="colors-module_fill_colour-static-static-1__29U2y"><path d="M498.887 64.6914L563.251 0.324951H547.162L482.793 64.6914H498.887Z"></path><path d="M373.131 138.985H389.222L463.51 64.6914H447.422L373.131 138.985Z"></path><path d="M539.408 94.5181H507.037L398.811 202.749H431.181L539.408 94.5181Z"></path><path d="M502.781 94.5181H468.244L360.024 202.742H349.31L210.479 341.581H221.802L360.629 202.749H394.555L502.781 94.5181Z"></path><path d="M267.781 370.643L376.011 262.417H341.469L233.243 370.643H267.781Z"></path><path d="M90.6777 237.31L283.362 44.6238H248.82L56.1357 237.31H90.6777Z"></path><path d="M87.8858 112.728L200.286 0.324951H183.117L70.7139 112.728H87.8858Z"></path><path d="M545.048 0.324951H527.878L463.51 64.6914H480.682L545.048 0.324951Z"></path><path d="M0 282.12V293.438L56.1353 237.31H44.8123L0 282.12Z"></path><path d="M353.848 138.985H371.017L445.311 64.6914H428.139L353.848 138.985Z"></path><path d="M30.5937 308.631L0 339.225V355.318L46.6874 308.631H30.5937Z"></path><path d="M279.76 155.594H255.605L3.58594 407.605H27.7468L279.76 155.594Z"></path><path d="M0 180.65V196.742L65.027 131.713H48.9354L0 180.65Z"></path><path d="M94.9258 237.31H127.297L319.98 44.6238H287.612L94.9258 237.31Z"></path><path d="M0 319.943V337.113L28.4821 308.631H11.3102L0 319.943Z"></path><path d="M196.664 380.474L86.1133 491.025H97.4362L207.987 380.474H196.664Z"></path><path d="M31.2457 237.31L0 268.555V280.635L43.325 237.31H31.2457Z"></path><path d="M269.289 204.999H278.292L344.305 138.985H335.303L269.289 204.999Z"></path><path d="M151.994 341.575L218.008 275.563H209.005L142.998 341.575H151.994Z"></path><path d="M279.4 204.999H287.834L353.848 138.985H345.412L279.4 204.999Z"></path><path d="M603.206 402.161H591.889L500.253 493.797H511.569L603.206 402.161Z"></path><path d="M93.5768 548.891L38.1426 604.325H54.2342L109.664 548.891H93.5768Z"></path><path d="M558.188 382.925L604 337.113V319.943L541.022 382.925H558.188Z"></path><path d="M587.604 298.54H598.926L604 293.466V282.143L587.604 298.54Z"></path><path d="M604 339.225L560.3 382.925H576.394L604 355.318V339.225Z"></path><path d="M54.2343 0.324951H38.1427L19.2832 19.1844H35.3769L54.2343 0.324951Z"></path><path d="M88.214 0.324951H79.2115L29.6816 49.8548H38.6842L88.214 0.324951Z"></path><path d="M29.6817 49.8547H18.3651L0 68.2199V79.5364L29.6817 49.8547Z"></path><path d="M0 54.6532V66.7283L16.8736 49.8547H4.80064L0 54.6532Z"></path><path d="M486.686 493.797H498.761L590.397 402.161H578.324L486.686 493.797Z"></path><path d="M204.68 454.276L130.393 528.569H146.48L220.767 454.282H232.847L316.486 370.643H304.404L220.772 454.276H204.68Z"></path><path d="M314.366 434.956L144.999 604.325H161.093L330.46 434.956H314.366Z"></path><path d="M380.262 262.417L272.036 370.643H304.405L412.631 262.417H380.262Z"></path><path d="M268.638 581.3H291.277L574.037 298.54H551.398L268.638 581.3Z"></path><path d="M74.2936 548.891L18.8594 604.325H36.0292L91.457 548.891H74.2936Z"></path><path d="M375.214 545.341L525.362 395.2H508.192L358.049 545.341H375.214Z"></path><path d="M574.037 298.54H586.119L604 280.658V268.579L574.037 298.54Z"></path><path d="M317.971 370.643L234.332 454.282H245.655L329.294 370.643H317.971Z"></path><path d="M295.083 434.956L125.716 604.325H142.886L312.254 434.956H295.083Z"></path><path d="M282.737 155.594L30.7197 407.605H53.3592L305.377 155.594H282.737Z"></path><path d="M143.934 548.605H134.932L79.2119 604.325H88.2144L143.934 548.605Z"></path><path d="M223.311 581.3H206.139L183.116 604.325H200.286L223.311 581.3Z"></path><path d="M0 161.367V178.535L46.8216 131.713H29.6519L0 161.367Z"></path><path d="M527.475 395.2L377.326 545.341H393.42L543.567 395.2H527.475Z"></path><path d="M548.428 298.54H524.267L241.511 581.3H265.667L548.428 298.54Z"></path><path d="M241.511 581.3H225.423L202.4 604.325H218.49L241.511 581.3Z"></path><path d="M72.5486 491.025H84.628L195.179 380.474H183.1L72.5465 491.025H56.4591L0 547.487V563.576L72.5486 491.025Z"></path><path d="M39.792 49.8548H48.232L97.7576 0.324951H89.3219L39.792 49.8548Z"></path><path d="M106.06 19.9813H123.231L142.886 0.324951H125.716L106.06 19.9813Z"></path><path d="M54.3475 491.025H37.1756L0 528.203V545.373L54.3475 491.025Z"></path><path d="M604 493.574V484.573L548.05 540.523H557.052L604 493.574Z"></path><path d="M558.16 540.523H566.594L603.999 503.117V494.684L558.16 540.523Z"></path><path d="M604.001 563.576V547.487L547.162 604.325H563.254L604.001 563.576Z"></path><path d="M36.0293 0.324951H18.8595L0 19.1844H17.1698L36.0293 0.324951Z"></path><path d="M604 545.373V528.203L527.878 604.325H545.048L604 545.373Z"></path><path d="M418.31 545.341H406.987L348.007 604.325H359.326L418.31 545.341Z"></path><path d="M591.19 460.129H579.117L434.917 604.325H446.996L591.19 460.129Z"></path><path d="M405.502 545.341H393.42L334.44 604.325H346.518L405.502 545.341Z"></path><path d="M604 460.129H592.681L448.483 604.325H459.804L604 460.129Z"></path><path d="M125.343 19.9813H141.437L161.093 0.324951H144.999L125.343 19.9813Z"></path><path d="M153.473 548.605H145.04L89.3223 604.325H97.758L153.473 548.605Z"></path><path d="M119.916 418.579L196.914 341.575H180.826L103.822 418.579H115.269H119.916Z"></path><path d="M202.566 454.276H185.397L111.109 528.57H128.279L202.566 454.276Z"></path><path d="M527.54 225.068H515.46L379.864 360.669H391.946L527.54 225.068Z"></path><path d="M347.825 202.742H335.746L196.913 341.575L208.995 341.581L347.825 202.742Z"></path><path d="M66.0135 418.562L0 484.573V493.574L75.0097 418.562H66.0135Z"></path><path d="M514.867 187.952L440.58 262.246H456.667L530.961 187.952H514.867Z"></path><path d="M76.1219 418.562L0 494.684V503.118L84.5555 418.562H76.1219Z"></path><path d="M219.116 275.563L153.103 341.575H161.543L227.556 275.563H219.116Z"></path><path d="M178.712 341.575H161.543L84.5557 418.562L101.708 418.579L178.712 341.575Z"></path><path d="M328.425 19.9068H339.741L359.323 0.324951H348.007L328.425 19.9068Z"></path><path d="M89.9971 112.728H106.091L218.489 0.324951H202.4L89.9971 112.728Z"></path><path d="M324.832 110.407H336.914L446.996 0.324951H434.919L324.832 110.407Z"></path><path d="M338.399 110.407H349.722L459.805 0.324951H448.484L338.399 110.407Z"></path><path d="M314.858 19.9068H326.933L346.515 0.324951H334.44L314.858 19.9068Z"></path><path d="M484.268 187.952H495.584L604 79.5365V68.22L484.268 187.952Z"></path><path d="M438.46 262.246L512.754 187.952H495.584L421.297 262.246H438.46Z"></path><path d="M470.701 187.952H482.776L604 66.7284V54.6533L470.701 187.952Z"></path><path d="M559.591 225.087H575.685L604 196.769V180.674L559.591 225.087Z"></path><path d="M540.331 225.088H557.477L604 178.56V161.395L540.324 225.068H529.025L393.431 360.669H404.747L540.331 225.088Z"></path></g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/ferrari/chalec01/2025ferrarichalec01right.webp');"></div>
+                    <div class="card-gradient"></div>
+                    <div class="driver-name">
+                        <div class="fw-bold">C. Leclerc</div>
+                        <div class="small text-white">Ferrari</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -358,6 +337,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="js/f1-3d.js"></script>
 
 <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -369,10 +349,6 @@
         });
     });
 
-    const carouselEl = document.querySelector('#newsCarousel');
-    if(carouselEl){
-        const carousel = bootstrap.Carousel.getOrCreateInstance(carouselEl, { interval: 6000, ride: 'carousel' });
-    }
 </script>
 </body>
 </html>
