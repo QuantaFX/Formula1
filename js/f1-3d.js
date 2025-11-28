@@ -178,10 +178,8 @@ window.addEventListener('keyup', (e) => {
 function animate() {
     requestAnimationFrame(animate);
 
-    const rotationSpeed = 0.1;
-    wheels.forEach((wheel) => {
-        wheel.rotation.x += rotationSpeed;
-    });
+    const rotationDamping = 1;
+    let wheelRotationSpeed = 0;
 
     if (carBody) {
         suspensionOffset += 0.01;
@@ -192,11 +190,17 @@ function animate() {
                 child.position.z = suspensionAmount;
             }
         });
-    }
 
-    if (carBody) {
-        if (keys.w) carVelocity.z += carSpeed;
-        if (keys.s) carVelocity.z -= carSpeed;
+        if (keys.w) {
+            carVelocity.z += carSpeed;
+            wheelRotationSpeed = 0.1;
+        } else if (keys.s) {
+            carVelocity.z -= carSpeed;
+            wheelRotationSpeed = -0.1;
+        } else {
+            wheelRotationSpeed *= rotationDamping;
+        }
+
         if (keys.a) carVelocity.x += carSpeed;
         if (keys.d) carVelocity.x -= carSpeed;
 
@@ -206,13 +210,15 @@ function animate() {
         carBody.position.x += carVelocity.x;
         carBody.position.z += carVelocity.z;
 
-        // Camera positioned behind and above the car
+        wheels.forEach((wheel) => {
+            wheel.rotation.x += wheelRotationSpeed;
+        });
+
         const cameraOffset = new THREE.Vector3(0, 0.015, -0.05);
         camera.position.x = carBody.position.x + cameraOffset.x;
         camera.position.y = carBody.position.y + cameraOffset.y;
         camera.position.z = carBody.position.z + cameraOffset.z;
 
-        // Look at a point slightly ahead of the car
         const lookAtOffset = new THREE.Vector3(0, 0.01, 0.1);
         controls.target.set(
             carBody.position.x + lookAtOffset.x,
@@ -221,15 +227,6 @@ function animate() {
         );
 
         controls.target.copy(carBody.position);
-
-        suspensionOffset += 0.01;
-        const suspensionAmount = Math.sin(suspensionOffset) * 0.02;
-
-        carBody.traverse((child) => {
-            if (child.isMesh && !child.userData.isWheel) {
-                child.position.z = suspensionAmount;
-            }
-        });
     }
 
     renderer.render(scene, camera);
