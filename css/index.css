@@ -46,6 +46,10 @@ body{
 section{padding:3.5rem 0}
 .section-title{color:#fff; font-weight:700; margin-bottom:1rem}
 
+#standings .container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 .card-stat{
     background:#0f0f0f;
     border:1px solid rgba(255,255,255,0.04);
@@ -79,6 +83,11 @@ section{padding:3.5rem 0}
 .team-racingbulls {background: linear-gradient(0deg, #2d4683 0%, #6c98ff 100%);}
 .team-alpine {background: linear-gradient(0deg, #890393 0%, #d900e8 100%);}
 .team-kick {background: linear-gradient(0deg, #05630c 0%, #01c00e 100%);}
+
+.ranking .team-mclaren {background: linear-gradient(90deg, #974707 0%, #f48a00 100%);}
+.ranking .team-redbull {background: linear-gradient(90deg, #033077 0%, #0091ff 100%);}
+
+.first {color: gold}
 
 .partner-svg{width:90px;height:34px;border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px;box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);}
 .partner-svg img.partner-logo{max-width:100%;max-height:100%;object-fit:contain;display:block;}
@@ -398,6 +407,106 @@ section{padding:3.5rem 0}
     display: block;
     width: 100% !important;
     height: 100% !important;
+}
+
+.ranking .card-stat {
+    position: relative;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: left;
+}
+
+.ranking .card-stat .card-media{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: 50% !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    z-index: 1;
+    transform: translateX(20%);
+}
+
+.ranking:hover .card-stat .card-media{
+    transform: scale(1.2) translateY(20px);
+}
+
+.ranking .card-stat .rank-overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover !important;
+    z-index: 0;
+    transform: translateX(0px);
+}
+
+.ranking:hover .card-stat .rank-overlay{
+    transform: translateY(50px);
+}
+
+.ranking .card-stat .card-content{
+    position: absolute;
+    left: 0;
+    margin-left: 20px;
+}
+
+.ranking:hover .card-stat .card-content{
+    transform: translateX(-200px);
+}
+
+.card-content .name{
+    padding-bottom: 120px;
+}
+
+.team-rank .card-stat {
+    position: relative;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: left;
+}
+
+.team-rank .card-stat .card-media{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: 90% !important;
+    background-position: center bottom !important;
+    background-repeat: no-repeat !important;
+    z-index: 1;
+}
+
+.team-rank .card-stat .rank-overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: 120% !important;
+    background-position: center bottom !important;
+    background-repeat: no-repeat !important;
+    z-index: 0;
+}
+
+.team-rank .card-stat .card-content-l{
+    position: absolute;
+    left: 20px;
+}
+
+.team-rank .card-stat .card-content-r{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin-left: 20px;
 }
 
 footer{background:#040404; color:var(--muted); padding:2rem 0; border-top:1px solid rgba(255,255,255,0.03)}

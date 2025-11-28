@@ -34,7 +34,6 @@
 
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link px-3" href="#news">News</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#standings">Standings</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#calendar">Calendar</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#drivers">Drivers</a></li>
@@ -58,8 +57,8 @@
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-caption" style="margin: 10px; padding: 20px; background:#0f0f0f; border:1px solid rgba(255,255,255,0.04); border-radius:.5rem; padding:1rem">
-        <h1 class="fw-bold" style="color: #e10600; font-size: 200%; margin: 0">Ferrari Concept</h1>
-        <p style="margin: 0; color: rgba(255,255,255,0.7)">Experience the thrill of Formula 1 racing</p>
+        <h1 class="fw-bold" style="color: #b80b07; font-size: 200%; margin: 0">Red Bull Concept</h1>
+        <p style="margin: 0; color: rgba(255,255,255,0.7)">Experience Formula 1 racing</p>
     </div>
 </section>
 
@@ -67,65 +66,101 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-end mb-3">
             <h3 class="section-title">Drivers Championship</h3>
-            <div class="small text-white-50">Updated: Today</div>
         </div>
 
         <div class="row g-3">
-            <div class="col-lg-7">
-                <div class="card-stat">
-                    <div class="table-responsive">
-                        <table class="table table-dark table-borderless mb-0">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Driver</th>
-                                <th class="text-end">Points</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><span class="driver-name">Max Verstappen</span><div class="small text-white-50">Red Bull</div></td>
-                                <td class="text-end">320</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td><span class="driver-name">Lewis Hamilton</span><div class="small text-white-50">Mercedes</div></td>
-                                <td class="text-end">264</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><span class="driver-name">Lando Norris</span><div class="small text-white-50">McLaren</div></td>
-                                <td class="text-end">210</td>
-                            </tr>
-                            </tbody>
-                        </table>
+            <div class="col-lg-4 ranking">
+                <div class="card-stat team-mclaren"  style="height: 300px;">
+                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/mclaren/lannor01/2025mclarenlannor01right.webp')"></div>
+                    <div class="rank-overlay" style="background-image: url('3d/rank-driver.png')"></div>
+                    <div class="card-content">
+                        <div class="rank 1st fw-bold"  style="font-size: 30px">1st</div>
+                        <div class="team text-white" style="font-size: 15px">Mclaren</div>
+                        <div class="name text-white" style="font-size: 20px">Lando <b>Norris</b></div>
+                        <div class="points fw-bold text-white"  style="font-size: 30px">390 pts</div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-5">
-                <div class="card-stat mb-3">
-                    <h5 class="mb-2">Next Race</h5>
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <div class="fw-bold">British GP</div>
-                            <div class="small text-white-50">Silverstone — 07 Jul</div>
-                        </div>
-                        <div class="text-end">
-                            <div class="small text-white-50">Circuit</div>
-                            <div class="fw-bold">5.891 km</div>
-                        </div>
+            <div class="col-lg-4 ranking">
+                <div class="card-stat team-mclaren" style="height: 300px;">
+                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,w_314/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/mclaren/oscpia01/2025mclarenoscpia01right.webp')"></div>
+                    <div class="rank-overlay" style="background-image: url('3d/rank-driver.png')"></div>
+                    <div class="card-content">
+                        <div class="rank fw-bold" style="font-size: 30px">2nd</div>
+                        <div class="team text-white" style="font-size: 15px">Mclaren</div>
+                        <div class="name text-white" style="font-size: 20px">Oscar <b>Piastri</b></div>
+                        <div class="points fw-bold text-white" style="font-size: 30px">390 pts</div>
                     </div>
                 </div>
+            </div>
 
-                <div class="card-stat">
-                    <h6 class="small text-white-50">Session Times</h6>
-                    <ul class="list-unstyled mb-0 small">
-                        <li>Practice 1 — 09:30 GMT</li>
-                        <li>Qualifying — 14:00 GMT</li>
-                        <li>Race — 15:00 GMT</li>
-                    </ul>
+            <div class="col-lg-4 ranking">
+                <div class="card-stat team-redbull"  style="height: 300px;">
+                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/redbullracing/maxver01/2025redbullracingmaxver01right.webp')"></div>
+                    <div class="rank-overlay" style="background-image: url('3d/rank-driver.png')"></div>
+                    <div class="card-content">
+                        <div class="rank fw-bold" style="font-size: 30px">3rd</div>
+                        <div class="team text-white" style="font-size: 15px">Red Bull</div>
+                        <div class="name text-white" style="font-size: 20px">Max <b>Verstappen</b></div>
+                        <div class="points fw-bold text-white" style="font-size: 30px">366 pts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-3">
+            <h3 class="section-title">Team Championship</h3>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-lg-4 team-rank">
+                <div class="card-stat team-mclaren"  style="height: 280px;">
+                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,h_262/q_auto/d_common:f1:2025:fallback:car:2025fallbackcarright.webp/v1740000000/common/f1/2025/mclaren/2025mclarencarright.webp')"></div>
+                    <div class="rank-overlay" style="background-image: url('3d/rank-team.png')"></div>
+                    <div class="card-content-l">
+                        <div class="rank 1st fw-bold"  style="font-size: 30px">1st</div>
+                        <div class="team text-white" style="font-size: 15px">Mclaren</div>
+                        <div class="points fw-bold text-white"  style="font-size: 30px">756 pts</div>
+                    </div>
+                    <div class="card-content-r">
+                        <div class="name text-white" style="font-size: 20px;">Lando <b>Norris</b></div>
+                        <div class="name text-white" style="font-size: 20px">Oscar <b>Piastri</b></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 team-rank">
+                <div class="card-stat team-mercedes" style="height: 280px;">
+                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,h_262/q_auto/d_common:f1:2025:fallback:car:2025fallbackcarright.webp/v1740000000/common/f1/2025/mercedes/2025mercedescarright.webp')"></div>
+                    <div class="rank-overlay" style="background-image: url('3d/rank-team.png')"></div>
+                    <div class="card-content-l">
+                        <div class="rank 1st fw-bold"  style="font-size: 30px">2nd</div>
+                        <div class="team text-white" style="font-size: 15px">Mercedes</div>
+                        <div class="points fw-bold text-white"  style="font-size: 30px">431 pts</div>
+                    </div>
+                    <div class="card-content-r">
+                        <div class="name text-white" style="font-size: 20px">George <b>Russell</b></div>
+                        <div class="name text-white" style="font-size: 20px">Kimi <b>Antonelli</b></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 team-rank">
+                <div class="card-stat team-redbull"  style="height: 280px;">
+                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,h_262/q_auto/d_common:f1:2025:fallback:car:2025fallbackcarright.webp/v1740000000/common/f1/2025/redbullracing/2025redbullracingcarright.webp')"></div>
+                    <div class="rank-overlay" style="background-image: url('3d/rank-team.png')"></div>
+                    <div class="card-content-l">
+                        <div class="rank 1st fw-bold"  style="font-size: 30px">3rd</div>
+                        <div class="team text-white" style="font-size: 15px">Red Bull</div>
+                        <div class="points fw-bold text-white"  style="font-size: 30px">391 pts</div>
+                    </div>
+                    <div class="card-content-r">
+                        <div class="name text-white" style="font-size: 20px">Max <b>Verstappen</b></div>
+                        <div class="name text-white" style="font-size: 20px">Yuki <b>Tsunoda</b></div>
+                    </div>
                 </div>
             </div>
         </div>
