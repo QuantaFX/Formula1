@@ -196,9 +196,9 @@ function animate() {
         }
 
         if (keys.a) {
-            carVelocity.x = Math.max(carVelocity.x - acceleration, -maxVelocity);
+            carVelocity.x = Math.max(carVelocity.x + acceleration, +maxVelocity);
         } else if (keys.d) {
-            carVelocity.x = Math.min(carVelocity.x + acceleration, maxVelocity);
+            carVelocity.x = Math.min(carVelocity.x - acceleration, -maxVelocity);
         } else {
             carVelocity.x *= carFriction;
         }
