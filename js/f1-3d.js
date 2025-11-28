@@ -21,7 +21,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 camera.position.set(0.03, 0.03, 0.03);
 controls.target.set(0, 0, 0);
 controls.autoRotate = true;
-controls.autoRotateSpeed = 0;
+controls.autoRotateSpeed = -0.5;
 controls.enableZoom = true;
 controls.update();
 
@@ -175,6 +175,9 @@ window.addEventListener('keyup', (e) => {
     if (key in keys) keys[key] = false;
 });
 
+let isCarMoving = false;
+let cameraLerpFactor = 0.5;
+
 function animate() {
     requestAnimationFrame(animate);
 
@@ -195,6 +198,9 @@ function animate() {
             carVelocity.z *= carFriction;
         }
 
+        const wasCarMoving = isCarMoving;
+        isCarMoving = Math.abs(carVelocity.x) > 0.0001 || Math.abs(carVelocity.z) > 0.0001;
+
         if (keys.a) {
             carVelocity.x = Math.max(carVelocity.x + acceleration, +maxVelocity);
         } else if (keys.d) {
@@ -211,16 +217,33 @@ function animate() {
         });
 
         const cameraOffset = new THREE.Vector3(0, 0.015, -0.05);
-        camera.position.x = carBody.position.x + cameraOffset.x;
-        camera.position.y = carBody.position.y + cameraOffset.y;
-        camera.position.z = carBody.position.z + cameraOffset.z;
-
         const lookAtOffset = new THREE.Vector3(0, 0.005, -0.01);
-        controls.target.set(
-            carBody.position.x + lookAtOffset.x,
-            carBody.position.y + lookAtOffset.y,
-            carBody.position.z + lookAtOffset.z
-        );
+
+        if (isCarMoving) {
+            cameraLerpFactor = 0.5;
+            camera.position.lerp(
+                carBody.position.clone().add(cameraOffset),
+                cameraLerpFactor
+            );
+            controls.target.lerp(
+                carBody.position.clone().add(lookAtOffset),
+                cameraLerpFactor
+            );
+        } else if (wasCarMoving) {
+            cameraLerpFactor = 0.1;
+            camera.position.lerp(
+                carBody.position.clone().add(cameraOffset),
+                cameraLerpFactor
+            );
+            controls.target.lerp(
+                carBody.position.clone().add(lookAtOffset),
+                cameraLerpFactor
+            );
+        } else {
+            cameraLerpFactor = 0.5;
+            controls.autoRotate = true;
+        }
+
 
     }
 
