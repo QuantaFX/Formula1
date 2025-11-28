@@ -160,11 +160,11 @@ new GLTFLoader().load('3d/concept_ferrari.glb', (gltf) => {
 });
 
 const keys = { w: false, a: false, s: false, d: false };
-const carVelocity = { x: 0, z: 0 };
-const carSpeed = 0.0001;
 const carFriction = 0.96;
+let carVelocity = new THREE.Vector3(0, 0, 0);
+const acceleration = 0.00001;
+const maxVelocity = 0.001;
 
-// Add keyboard event listeners
 window.addEventListener('keydown', (e) => {
     const key = e.key.toLowerCase();
     if (key in keys) keys[key] = true;
@@ -185,27 +185,23 @@ function animate() {
         suspensionOffset += 0.01;
         const suspensionAmount = Math.sin(suspensionOffset) * 0.02;
 
-        carBody.traverse((child) => {
-            if (child.isMesh && !child.userData.isWheel) {
-                child.position.z = suspensionAmount;
-            }
-        });
-
         if (keys.w) {
-            carVelocity.z += carSpeed;
+            carVelocity.z = Math.max(carVelocity.z + acceleration, maxVelocity);
             wheelRotationSpeed = 0.1;
         } else if (keys.s) {
-            carVelocity.z -= carSpeed;
+            carVelocity.z = Math.min(carVelocity.z - acceleration, +maxVelocity);
             wheelRotationSpeed = -0.1;
         } else {
-            wheelRotationSpeed *= rotationDamping;
+            carVelocity.z *= carFriction;
         }
 
-        if (keys.a) carVelocity.x += carSpeed;
-        if (keys.d) carVelocity.x -= carSpeed;
-
-        carVelocity.x *= carFriction;
-        carVelocity.z *= carFriction;
+        if (keys.a) {
+            carVelocity.x = Math.max(carVelocity.x - acceleration, -maxVelocity);
+        } else if (keys.d) {
+            carVelocity.x = Math.min(carVelocity.x + acceleration, maxVelocity);
+        } else {
+            carVelocity.x *= carFriction;
+        }
 
         carBody.position.x += carVelocity.x;
         carBody.position.z += carVelocity.z;
@@ -219,14 +215,13 @@ function animate() {
         camera.position.y = carBody.position.y + cameraOffset.y;
         camera.position.z = carBody.position.z + cameraOffset.z;
 
-        const lookAtOffset = new THREE.Vector3(0, 0.01, 0.1);
+        const lookAtOffset = new THREE.Vector3(0, 0.005, -0.01);
         controls.target.set(
             carBody.position.x + lookAtOffset.x,
             carBody.position.y + lookAtOffset.y,
             carBody.position.z + lookAtOffset.z
         );
 
-        controls.target.copy(carBody.position);
     }
 
     renderer.render(scene, camera);
