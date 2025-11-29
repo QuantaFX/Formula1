@@ -543,3 +543,64 @@ footer{background:#040404; color:var(--muted); padding:2rem 0; border-top:1px so
         bottom: 2rem;
     }
 }
+
+.f1-table {
+  width: 68%;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  background-color: #0f0f0f;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  table-layout: fixed;
+}
+
+.f1-table th,
+.f1-table td {
+  text-align: center;
+  padding: 0.75rem 1rem;
+}
+
+.f1-table thead {
+  background-color: #111;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-bottom: 2px solid #444;
+}
+
+.f1-table colgroup col:nth-child(1) { width: 80px; }   
+.f1-table colgroup col:nth-child(2) { width: auto; }   
+.f1-table colgroup col:nth-child(3) { width: 80px; }   
+.f1-table colgroup col:nth-child(4) { width: auto; }  
+.f1-table colgroup col:nth-child(5) { width: 80px; }   
+
+
+.f1-table tbody tr {
+  border-bottom: 1px solid #222;
+  transition: background-color 0.2s;
+}
+
+.f1-table tbody tr:hover {
+  background-color: #1a1a1a;
+}
+
+.f1-table tbody td {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+}
+
+.f1-table tbody tr[data-team="mclaren"] td:first-child {
+  border-left: 4px solid #ff8700;
+}
+.f1-table tbody tr[data-team="redbull"] td:first-child {
+  border-left: 4px solid #0600ef; 
+}
+.f1-table tbody tr[data-team="mercedes"] td:first-child {
+  border-left: 4px solid #00d2be; 
+}
+/* Add more teams as needed */
+.f1-table tbody td:last-child {
+  font-weight: bold;
+  text-align: right;
+}
+
