@@ -537,7 +537,7 @@ footer{background:#040404; color:var(--muted); padding:2rem 0; border-top:1px so
   background-color: #0f0f0f;
   color: #fff;
   font-family: 'Inter', sans-serif;
-  table-layout: fixed; 
+  table-layout: fixed;
 }
 
 .f1-table th,
@@ -554,13 +554,11 @@ footer{background:#040404; color:var(--muted); padding:2rem 0; border-top:1px so
   border-bottom: 2px solid #444;
 }
 
-
-.f1-table colgroup col:nth-child(1) { width: 60px; }   
+.f1-table colgroup col:nth-child(1) { width: 80px; }   
 .f1-table colgroup col:nth-child(2) { width: auto; }   
-.f1-table colgroup col:nth-child(3) { width: auto; }   
-.f1-table colgroup col:nth-child(4) { width: 80px; }   
-
-
+.f1-table colgroup col:nth-child(3) { width: 80px; }   
+.f1-table colgroup col:nth-child(4) { width: auto; }  
+.f1-table colgroup col:nth-child(5) { width: 80px; }   
 
 
 .f1-table tbody tr {
