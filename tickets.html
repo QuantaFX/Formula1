@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Tickets</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+</head>
+<body>
+
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+}
+</script>
+
+<header class="topbar">
+    <nav class="container navbar navbar-expand-lg navbar-dark p-0">
+        <div class="container-fluid p-0">
+            <a class="navbar-brand brand d-flex align-items-center" href="#">
+                <svg width="100" height="40" viewBox="0 0 180 45" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false" style="margin-right:.6rem;display:inline-block;vertical-align:middle">
+                    <path d="M40.732 23.0579L22.8972 40.3607H0.149231L28.4512 12.2724C38.9728 1.85968 44.0451 0.150757 61.9847 0.150757H132.846L117.466 15.2086H64.0119C50.6086 15.2086 47.7562 16.2431 40.7278 23.0579H40.732ZM115.171 17.6128H64.3344C50.8348 17.6128 48.7237 18.6474 42.6001 24.7668L27.0062 40.3607H48.0996L53.1175 35.3429C56.4348 32.0256 57.9134 31.7114 64.5983 31.7114H101.072L115.171 17.6128ZM120.67 40.3607L160.989 0.150757H135.946L95.7359 40.3607H120.674H120.67Z" fill="#E10600"></path>
+                </svg>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html#standings">Standings</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html#calendar">Calendar</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html#drivers">Drivers</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-3 px-3" href="tickets.html">Tickets</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container live-strip d-flex align-items-center gap-3">
+        <div class="live-pill">LIVE</div>
+        <div class="small text-white-50">Practice 2 — Silverstone · 12:30 GMT</div>
+        <div class="small text-white-50">|</div>
+        <div class="small text-white-50">Hamilton P1 · Verstappen P2 · Norris P3</div>
+    </div>
+</header>
+
+<section id="current">
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center mb-3">
+            <h3 class="section-title">2025 FIA FORMULA ONE WORLD CHAMPIONSHIP</h3>
+        </div>
+
+        
+        <div class="d-flex justify-content-center align-items-center mb-3">
+            <div class="current-venue"></div>
+        </div>
+    </div>
+</section>
+
+<section id="next">
+    <div class="container">
+    <div class="d-flex justify-content-center align-items-center mb-3">
+        <h3 class="section-title">2026 FIA FORMULA ONE WORLD CHAMPIONSHIP</h3>
+    </div>
+
+    <div class="row g-3">
+            <div class="col-sm-6 col-md-3">
+                <div class="card-media" style="background:url('https://static.tickets-platform.com/img/themes/fom/desktop/calendar/desktop/3159-small.jpg'); height: 180px;"></div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card-media" style="background:url('https://static.tickets-platform.com/img/themes/fom/desktop/calendar/desktop/3182-small.jpg'); height: 180px;"></div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card-media" style="background:url('https://static.tickets-platform.com/img/themes/fom/desktop/calendar/desktop/3309-small.jpg'); height: 180px;"></div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card-media" style="background:url('https://static.tickets-platform.com/img/themes/fom/desktop/calendar/desktop/3176-small.jpg'); height: 180px;"></div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card-media" style="background:url('https://static.tickets-platform.com/img/themes/fom/desktop/calendar/desktop/3176-small.jpg'); height: 180px;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+</body>
+</html>
