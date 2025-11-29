@@ -531,13 +531,13 @@ footer{background:#040404; color:var(--muted); padding:2rem 0; border-top:1px so
 }
 
 .f1-table {
-  width: 80%;
+  width: 68%;
   margin: 2rem auto;
   border-collapse: collapse;
   background-color: #0f0f0f;
   color: #fff;
   font-family: 'Inter', sans-serif;
-  table-layout: fixed; /* <--- forces equal alignment */
+  table-layout: fixed; 
 }
 
 .f1-table th,
@@ -546,7 +546,6 @@ footer{background:#040404; color:var(--muted); padding:2rem 0; border-top:1px so
   padding: 0.75rem 1rem;
 }
 
-/* Header styling */
 .f1-table thead {
   background-color: #111;
   text-transform: uppercase;
@@ -555,11 +554,11 @@ footer{background:#040404; color:var(--muted); padding:2rem 0; border-top:1px so
   border-bottom: 2px solid #444;
 }
 
-/* Column widths */
-.f1-table colgroup col:nth-child(1) { width: 10%; }  /* Pos */
-.f1-table colgroup col:nth-child(2) { width: 10%; }  /* Driver */
-.f1-table colgroup col:nth-child(3) { width: 35%; }  /* Team */
-.f1-table colgroup col:nth-child(4) { width: 4%; }  /* Points */
+
+.f1-table colgroup col:nth-child(1) { width: 60px; }   
+.f1-table colgroup col:nth-child(2) { width: auto; }   
+.f1-table colgroup col:nth-child(3) { width: auto; }   
+.f1-table colgroup col:nth-child(4) { width: 80px; }   
 
 
 
