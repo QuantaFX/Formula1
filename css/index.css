@@ -544,35 +544,55 @@ footer{background:#040404; color:var(--muted); padding:2rem 0; border-top:1px so
     }
 }
 
-.f1-table {
-  width: 68%;
-  margin: 2rem auto;
-  border-collapse: collapse;
-  background-color: #0f0f0f;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-  table-layout: fixed;
-}
+    .f1-table {
+      width: 68%;
+      margin: 2rem auto;
+      border-collapse: collapse;
+      background-color: #0f0f0f;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      table-layout: fixed;
+    }
 
-.f1-table th,
-.f1-table td {
-  text-align: center;
-  padding: 0.75rem 1rem;
-}
+    .f1-table th,
+    .f1-table td {
+      text-align: center;
+      padding: 0.75rem 1rem;
+    }
 
-.f1-table thead {
-  background-color: #111;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 0.95rem;
-  border-bottom: 2px solid #444;
-}
+    .f1-table thead {
+      background-color: #111;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-bottom: 2px solid #444;
+    }
 
-.f1-table colgroup col:nth-child(1) { width: 80px; }   
-.f1-table colgroup col:nth-child(2) { width: auto; }   
-.f1-table colgroup col:nth-child(3) { width: 80px; }   
-.f1-table colgroup col:nth-child(4) { width: auto; }  
-.f1-table colgroup col:nth-child(5) { width: 80px; }   
+    .f1-table colgroup col:nth-child(1) { width: 80px; }   
+    .f1-table colgroup col:nth-child(2) { width: auto; }   
+    .f1-table colgroup col:nth-child(3) { width: 80px; }   
+    .f1-table colgroup col:nth-child(4) { width: auto; }  
+    .f1-table colgroup col:nth-child(5) { width: 80px; }  
+    
+    .extra {
+      display: none; 
+    }
+
+    button#toggle-standings {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.5rem 1rem;
+      background-color: #111;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+    }
+
+    button#toggle-standings:hover {
+      background-color: #222;
+    }
 
 
 .f1-table tbody tr {
