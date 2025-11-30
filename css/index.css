@@ -509,25 +509,11 @@ section{padding:3.5rem 0}
     margin-left: 20px;
 }
 
-.current-venue{
-    position: absolute;
-}
-
-.next-venue{
-    position: absolute;
-}
-
 .banner{
     position: absolute;
     margin-left: 10px;
     font-size: 35px;
 }
-
-.venue-card{
-    position: absolute;
-    height: 270px;
-}
-
 
 footer{background:#040404; color:var(--muted); padding:2rem 0; border-top:1px solid rgba(255,255,255,0.03)}
 
