@@ -517,6 +517,12 @@ section{padding:3.5rem 0}
     position: absolute;
 }
 
+.banner{
+    position: absolute;
+    margin-left: 10px;
+    font-size: 35px;
+}
+
 .venue-card{
     position: absolute;
     height: 270px;
