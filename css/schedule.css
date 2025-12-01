@@ -8,14 +8,14 @@ body {
 	background-color: var(--bg-surface);
 }
 
-.list-group-item {
+.schedule-main-item {
 	--bs-list-group-bg: var(--f1-dark);
 	--bs-list-group-border-color: rgba(33, 37, 41, 1);
 	background-color: var(--bs-list-group-bg);
 	border-color: var(--bs-list-group-border-color);
 }
 
-.list-group-item-action:not(.active):hover {
+.schedule-main-item:not(.active):hover {
 	--bs-list-group-bg: var(--f1-dark);
 	--bs-list-group-border-color: rgba(33, 37, 41, 1);
 	background-color: #0b0b0b5d;
@@ -23,13 +23,13 @@ body {
 }
 
 .schedule-main-subcaption {
-	font-size: 0.8em;
+	font-size: 0.9em;
 }
 
 .schedule-main-subcaption {
-	font-size: 0.8em;
+	font-size: 0.9em;
 }
 
 .schedule-main-desc {
-	font-size: 0.75em;
+	font-size: 0.8em;
 }

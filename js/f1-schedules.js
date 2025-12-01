@@ -11,8 +11,9 @@ export async function loadSchedule() {
 		const parent = document.createElement("div");
 		parent.classList.add(
 			"schedule-main-item",
-			"list-group-item",
-			"list-group-item-action",
+			"px-3",
+			"py-5",
+			"mb-3",
 			"rounded-3",
 		);
 		parent.innerHTML = `
