@@ -4,15 +4,16 @@
 	--bg-surface: #1a1d20;
 }
 
-body {
-	background-color: var(--bg-surface);
-}
+/* body { */
+/* 	background-color: var(--bg-surface); */
+/* } */
 
 .schedule-main-item {
 	--bs-list-group-bg: var(--f1-dark);
 	--bs-list-group-border-color: rgba(33, 37, 41, 1);
 	background-color: var(--bs-list-group-bg);
 	border-color: var(--bs-list-group-border-color);
+	position: relative;
 }
 
 .schedule-main-item:not(.active):hover {
@@ -36,4 +37,91 @@ body {
 
 .placement-thumbnail {
 	background-color: var(--muted);
+}
+
+.f1-table {
+	width: 100%;
+	margin: 2rem auto;
+	border-collapse: collapse;
+	background-color: #0f0f0f;
+	color: #fff;
+	font-family: "Inter", sans-serif;
+	/* table-layout: fixed; */
+}
+
+.f1-table th,
+.f1-table td {
+	text-align: center;
+	padding: 0.75rem 1rem;
+}
+
+.f1-table thead {
+	background-color: #111;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 0.95rem;
+	border-bottom: 2px solid #444;
+}
+
+.f1-table colgroup col:nth-child(1) {
+	width: auto;
+}
+
+.f1-table colgroup col:nth-child(2) {
+	width: auto;
+}
+
+.f1-table colgroup col:nth-child(3) {
+	width: auto;
+}
+
+.extra {
+	display: none;
+}
+
+button#toggle-standings {
+	display: block;
+	margin: 1rem auto;
+	padding: 0.5rem 1rem;
+	background-color: #111;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	font-family: "Inter", sans-serif;
+	font-size: 1rem;
+}
+
+button#toggle-standings:hover {
+	background-color: #222;
+}
+
+.f1-table tbody tr {
+	border-bottom: 1px solid #222;
+	transition: background-color 0.2s;
+}
+
+.f1-table tbody tr:hover {
+	background-color: #1a1a1a;
+}
+
+.f1-table tbody td {
+	padding: 0.75rem 1rem;
+	font-size: 0.9rem;
+}
+
+.f1-table tbody tr[data-team="mclaren"] td:first-child {
+	border-left: 4px solid #ff8700;
+}
+
+.f1-table tbody tr[data-team="redbull"] td:first-child {
+	border-left: 4px solid #0600ef;
+}
+
+.f1-table tbody tr[data-team="mercedes"] td:first-child {
+	border-left: 4px solid #00d2be;
+}
+
+.f1-table tbody td:last-child {
+	font-weight: normal;
+	text-align: center;
 }

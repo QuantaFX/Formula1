@@ -43,6 +43,7 @@ export async function loadSchedule() {
 			"rounded-3",
 		);
 		parent.innerHTML = `
+        <a href="schedule.html?meeting_key=${data.meeting_key}" class="stretched-link"></a>
             <div class="d-flex flex-row justify-content-between">
                 <div class="schedule-main-subcaption text-white-50">ROUND ${i + 1}</div>
                 <span class="schedule-main-subcaption text-white-50 px-3 bg-dark rounded-pill">
@@ -93,3 +94,10 @@ export async function loadSchedule() {
 document.addEventListener("DOMContentLoaded", async () => {
 	await loadSchedule();
 });
+
+// document.querySelectorAll(".view").forEach((button) => {
+// 	button.addEventListener("click", () => {
+// 		const location = button.dataset.location; // gets the data-location
+// 		window.location.href = `view.html?location=${location}`;
+// 	});
+// });
