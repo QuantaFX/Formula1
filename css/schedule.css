@@ -1,0 +1,35 @@
+:root {
+	--f1-dark: #0b0b0b;
+	--muted: #9aa3ad;
+	--bg-surface: #1a1d20;
+}
+
+body {
+	background-color: var(--bg-surface);
+}
+
+.list-group-item {
+	--bs-list-group-bg: var(--f1-dark);
+	--bs-list-group-border-color: rgba(33, 37, 41, 1);
+	background-color: var(--bs-list-group-bg);
+	border-color: var(--bs-list-group-border-color);
+}
+
+.list-group-item-action:not(.active):hover {
+	--bs-list-group-bg: var(--f1-dark);
+	--bs-list-group-border-color: rgba(33, 37, 41, 1);
+	background-color: #0b0b0b5d;
+	border-color: var(--bs-list-group-border-color);
+}
+
+.schedule-main-subcaption {
+	font-size: 0.8em;
+}
+
+.schedule-main-subcaption {
+	font-size: 0.8em;
+}
+
+.schedule-main-desc {
+	font-size: 0.75em;
+}
