@@ -1,3 +1,17 @@
+async function loadCircuitName() {
+	const params = new URLSearchParams(window.location.search);
+	const meetingKey = params.get("meeting_key");
+
+	const file = await fetch(`../json/final-sched.json`);
+	const data = await file.json();
+
+	const session = data.find((session) => session.meeting_key == meetingKey);
+
+	const circuitName = session.meeting_official_name;
+	const header = document.getElementById("circuit-name");
+	header.innerHTML = circuitName;
+}
+
 async function loadAllSchedule() {
 	const params = new URLSearchParams(window.location.search);
 	const meetingKey = params.get("meeting_key");
@@ -109,6 +123,7 @@ async function loadResults() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+	await loadCircuitName();
 	await loadAllSchedule();
 	await loadResults();
 

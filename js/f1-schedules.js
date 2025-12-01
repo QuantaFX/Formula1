@@ -24,6 +24,61 @@ function formatDate(dateStart, dateEnd) {
 	}
 }
 
+function formatTimeSecondsToHMSM(totalSeconds) {
+	if (totalSeconds < 0) {
+		return "Time must be non-negative";
+	}
+
+	const wholeSeconds = Math.floor(totalSeconds);
+	const milliseconds = Math.round((totalSeconds - wholeSeconds) * 1000);
+	const hours = Math.floor(wholeSeconds / 3600);
+	const secondsAfterHours = wholeSeconds % 3600;
+	const minutes = Math.floor(secondsAfterHours / 60);
+	const seconds = secondsAfterHours % 60;
+
+	const formattedMinutes = String(minutes).padStart(2, "0");
+	const formattedSeconds = String(seconds).padStart(2, "0");
+	const formattedMilliseconds = String(milliseconds).padStart(3, "0");
+
+	return `${hours}:${formattedMinutes}:${formattedSeconds}.${formattedMilliseconds}`;
+}
+
+async function retrieveTopThree(meetingKey) {
+	const file = await fetch(`../json/session-results/${meetingKey}.json`);
+	const data = await file.json();
+	const results = [];
+
+	for (let i = 0; i < 3; i++) {
+		const driver = data[i];
+		const driverFile = await fetch(
+			`../json/drivers/${driver.driver_number}.json`,
+		);
+		const driverJson = await driverFile.json();
+		const lastName = driverJson.last_name.toUpperCase();
+
+		results.push({
+			position: driver.position,
+			lastName: lastName,
+			teamColor: driverJson.team_colour,
+			time:
+				results.length === 0
+					? formatTimeSecondsToHMSM(driver.duration)
+					: driver.gap_to_leader === null
+						? "DNF"
+						: `+${driver.gap_to_leader}`,
+			headshot: driverJson.headshot_url,
+		});
+	}
+
+	return results;
+}
+
+function getPosition(pos) {
+	if (pos === 1) return "1st";
+	else if (pos === 2) return "2nd";
+	else return "3rd";
+}
+
 export async function loadSchedule() {
 	const response = await fetch("../json/final-sched.json");
 	if (!response) {
@@ -33,7 +88,9 @@ export async function loadSchedule() {
 	const parsedData = await response.json();
 
 	const container = document.getElementById("f1-schedule-list");
-	parsedData.forEach((data, i, _) => {
+	let i = 0;
+
+	for (const data of parsedData) {
 		const parent = document.createElement("div");
 		parent.classList.add(
 			"schedule-main-item",
@@ -42,6 +99,26 @@ export async function loadSchedule() {
 			"mb-3",
 			"rounded-3",
 		);
+		parent.style.background = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('${data.media}')`;
+		parent.style.backgroundSize = "cover";
+		parent.style.backgroundPosition = "center";
+
+		const topThree = await retrieveTopThree(data.meeting_key);
+
+		let thumbnailHTML = "";
+		for (const driver of topThree) {
+			thumbnailHTML += `
+        <div class="placement-thumbnail rounded-3 d-flex flex-row px-3 py-2 mx-2">
+            <img src="${driver.headshot}"
+                alt="Max Verstappen" class="rounded-circle mx-2" height="75" width="75" style="background-color: #${driver.teamColor};">
+            <div class="d-flex flex-column">
+                <div class="text-md">${getPosition(driver.position)}</div>
+                <div class="text-md">${driver.lastName}</div>
+                <div class="text-md">${driver.time}</div>
+            </div>
+        </div>`;
+		}
+
 		parent.innerHTML = `
         <a href="schedule.html?meeting_key=${data.meeting_key}" class="stretched-link"></a>
             <div class="d-flex flex-row justify-content-between">
@@ -56,39 +133,13 @@ export async function loadSchedule() {
                     ${data.meeting_official_name}
                 </div>
                 <div class="d-sm-flex flex-row align-items-center py-0">
-                    <div class="placement-thumbnail rounded-3 d-flex flex-row px-3 mx-2 bg-dark">
-                        <img src="https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/1col/image.png"
-                            alt="Max Verstappen" class="rounded-circle" height="75" width="75">
-                        <div class="d-flex flex-column">
-                            <div class="text-md">1st</div>
-                            <div class="text-md">NORRIS</div>
-                            <div class="text-md">1:42:06.304</div>
-                        </div>
-                    </div>
-                    <div class="placement-thumbnail rounded-3 d-flex flex-row px-3 mx-2 bg-dark">
-                        <img src="https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/1col/image.png"
-                            alt="Max Verstappen" class="rounded-circle" height="75" width="75">
-                        <div class="d-flex flex-column">
-                            <div class="text-md">1st</div>
-                            <div class="text-md">NORRIS</div>
-                            <div class="text-md">1:42:06.304</div>
-                        </div>
-                    </div>
-                    <div class="placement-thumbnail rounded-3 d-flex flex-row px-3 mx-2 bg-dark">
-                        <img src="https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/1col/image.png"
-                            alt="Max Verstappen" class="rounded-circle" height="75" width="75">
-                        <div class="d-flex flex-column">
-                            <div class="text-md">1st</div>
-                            <div class="text-md">NORRIS</div>
-                            <div class="text-md">1:42:06.304</div>
-                        </div>
-                    </div>
+                    ${thumbnailHTML}
                 </div>
             </div>
         `;
-
 		container.appendChild(parent);
-	});
+		i++;
+	}
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

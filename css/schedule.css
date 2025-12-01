@@ -11,15 +11,18 @@
 .schedule-main-item {
 	--bs-list-group-bg: var(--f1-dark);
 	--bs-list-group-border-color: rgba(33, 37, 41, 1);
-	background-color: var(--bs-list-group-bg);
+	/* background-color: var(--bs-list-group-bg); */
 	border-color: var(--bs-list-group-border-color);
 	position: relative;
+	background-size: 100%;
+	transition: background-size 0.5s ease-in-out;
 }
 
 .schedule-main-item:not(.active):hover {
 	--bs-list-group-bg: var(--f1-dark);
 	--bs-list-group-border-color: rgba(33, 37, 41, 1);
 	background-color: #0b0b0b5d;
+	background-size: 200%;
 	border-color: var(--bs-list-group-border-color);
 }
 
@@ -36,7 +39,8 @@
 }
 
 .placement-thumbnail {
-	background-color: var(--muted);
+	background-color: rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(10px);
 }
 
 .f1-table {
@@ -125,3 +129,9 @@ button#toggle-standings:hover {
 	font-weight: normal;
 	text-align: center;
 }
+
+/* section { */
+/* 	& h2 { */
+/* 		border-bottom: 3px solid red; */
+/* 	} */
+/* } */
