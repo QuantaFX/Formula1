@@ -321,6 +321,7 @@ const pages = {
 	},
 };
 
+
 function loadPage() {
 	let params = new URLSearchParams(window.location.search);
 	let location = params.get("location");
@@ -351,3 +352,14 @@ function loadPage() {
 }
 
 loadPage();
+
+document.getElementById('sendBtn').addEventListener('click',  (event)=>{
+	event.preventDefault();
+	if(!document.getElementById('emailId').value == ""){
+		alert("Email sent! We will notify news to you via email");
+		document.getElementById('emailId').value = "";
+	} else {
+		alert("Enter Your email");
+		
+	}
+});

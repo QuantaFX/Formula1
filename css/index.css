@@ -776,3 +776,12 @@ button#toggle-standings:hover {
 	font-weight: bold;
 	text-align: right;
 }
+
+.email input[type=email]:focus-within{
+	outline: none;
+	color: white;
+}
+
+input[type=email]::placeholder{
+	color: white;
+}
