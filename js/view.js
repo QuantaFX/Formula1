@@ -53,7 +53,7 @@ const pages = {
         OfficialDates: 'Apr 10 - 12',
         Date1: 'April 10 2026',
         Date2: 'April 11 2026',
-        date3: 'April 12 2026',
+        Date3: 'April 12 2026',
         Racetrackurl: 'https://cdn.racingnews365.com/Circuits/Bahrain/_503xAUTO_crop_center-center_none/f1_2024_bhr_outline.png?v=1708703548',
         EventImageUrl: 'https://raceexperiences.com/wp-content/uploads/2023/01/72_DPI_WEB-DSC00012.jpg',
         Flag: 'fi fi-bh',
