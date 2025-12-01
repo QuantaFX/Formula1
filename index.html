@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -8,9 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
 </head>
+
 <body>
 
-<script type="importmap">
+    <script type="importmap">
     {
         "imports": {
             "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
@@ -19,365 +21,618 @@
     }
 </script>
 
-<header class="topbar">
-    <nav class="container navbar navbar-expand-lg navbar-dark p-0">
-        <div class="container-fluid p-0">
-            <a class="navbar-brand brand d-flex align-items-center" href="#">
-                <svg width="100" height="40" viewBox="0 0 180 45" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false" style="margin-right:.6rem;display:inline-block;vertical-align:middle">
-                    <path d="M40.732 23.0579L22.8972 40.3607H0.149231L28.4512 12.2724C38.9728 1.85968 44.0451 0.150757 61.9847 0.150757H132.846L117.466 15.2086H64.0119C50.6086 15.2086 47.7562 16.2431 40.7278 23.0579H40.732ZM115.171 17.6128H64.3344C50.8348 17.6128 48.7237 18.6474 42.6001 24.7668L27.0062 40.3607H48.0996L53.1175 35.3429C56.4348 32.0256 57.9134 31.7114 64.5983 31.7114H101.072L115.171 17.6128ZM120.67 40.3607L160.989 0.150757H135.946L95.7359 40.3607H120.674H120.67Z" fill="#E10600"></path>
+    <header class="topbar">
+        <nav class="container navbar navbar-expand-lg navbar-dark p-0">
+            <div class="container-fluid p-0">
+                <a class="navbar-brand brand d-flex align-items-center" href="#">
+                    <svg width="100" height="40" viewBox="0 0 180 45" xmlns="http://www.w3.org/2000/svg" role="img"
+                        aria-hidden="true" focusable="false"
+                        style="margin-right:.6rem;display:inline-block;vertical-align:middle">
+                        <path
+                            d="M40.732 23.0579L22.8972 40.3607H0.149231L28.4512 12.2724C38.9728 1.85968 44.0451 0.150757 61.9847 0.150757H132.846L117.466 15.2086H64.0119C50.6086 15.2086 47.7562 16.2431 40.7278 23.0579H40.732ZM115.171 17.6128H64.3344C50.8348 17.6128 48.7237 18.6474 42.6001 24.7668L27.0062 40.3607H48.0996L53.1175 35.3429C56.4348 32.0256 57.9134 31.7114 64.5983 31.7114H101.072L115.171 17.6128ZM120.67 40.3607L160.989 0.150757H135.946L95.7359 40.3607H120.674H120.67Z"
+                            fill="#E10600"></path>
+                    </svg>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item"><a class="nav-link px-3" href="#standings">Standings</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="#calendar">Calendar</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="#drivers">Drivers</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-outline-light ms-3 px-3"
+                                href="tickets.html">Tickets</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container live-strip d-flex align-items-center gap-3">
+            <div class="live-pill">LIVE</div>
+            <div class="small text-white-50">Practice 2 — Silverstone · 12:30 GMT</div>
+            <div class="small text-white-50">|</div>
+            <div class="small text-white-50">Hamilton P1 · Verstappen P2 · Norris P3</div>
+        </div>
+    </header>
+
+    <section id="hero-3d">
+        <div id="f1-canvas-container">
+            <canvas id="f1-canvas"></canvas>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-caption"
+            style="margin: 10px; padding: 20px; background:#0f0f0f; border:1px solid rgba(255,255,255,0.04); border-radius:.5rem; padding:1rem">
+            <h1 class="fw-bold" style="color: #b80b07; font-size: 200%; margin: 0">Red Bull Concept</h1>
+            <p style="margin: 0; color: rgba(255,255,255,0.7)">Experience Formula 1 racing</p>
+        </div>
+    </section>
+
+    <section id="standings">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-3">
+                <h3 class="section-title">Drivers Championship</h3>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-lg-4 ranking">
+                    <div class="card-stat team-mclaren" style="height: 300px;">
+                        <div class="card-media"
+                            style="background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/mclaren/lannor01/2025mclarenlannor01right.webp')">
+                        </div>
+                        <div class="rank-overlay" style="background-image: url('3d/rank-driver.png')"></div>
+                        <div class="card-content">
+                            <div class="rank 1st fw-bold" style="font-size: 30px">1st</div>
+                            <div class="team text-white" style="font-size: 15px">Mclaren</div>
+                            <div class="name text-white" style="font-size: 20px">Lando <b>Norris</b></div>
+                            <div class="points fw-bold text-white" style="font-size: 30px">390 pts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 ranking">
+                    <div class="card-stat team-mclaren" style="height: 300px;">
+                        <div class="card-media"
+                            style="background:url('https://media.formula1.com/image/upload/c_lfill,w_314/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/mclaren/oscpia01/2025mclarenoscpia01right.webp')">
+                        </div>
+                        <div class="rank-overlay" style="background-image: url('3d/rank-driver.png')"></div>
+                        <div class="card-content">
+                            <div class="rank fw-bold" style="font-size: 30px">2nd</div>
+                            <div class="team text-white" style="font-size: 15px">Mclaren</div>
+                            <div class="name text-white" style="font-size: 20px">Oscar <b>Piastri</b></div>
+                            <div class="points fw-bold text-white" style="font-size: 30px">390 pts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 ranking">
+                    <div class="card-stat team-redbull" style="height: 300px;">
+                        <div class="card-media"
+                            style="background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/redbullracing/maxver01/2025redbullracingmaxver01right.webp')">
+                        </div>
+                        <div class="rank-overlay" style="background-image: url('3d/rank-driver.png')"></div>
+                        <div class="card-content">
+                            <div class="rank fw-bold" style="font-size: 30px">3rd</div>
+                            <div class="team text-white" style="font-size: 15px">Red Bull</div>
+                            <div class="name text-white" style="font-size: 20px">Max <b>Verstappen</b></div>
+                            <div class="points fw-bold text-white" style="font-size: 30px">366 pts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="f1-table">
+            <colgroup>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th>Pos</th>
+                    <th>Driver</th>
+                    <th>Nationality</th>
+                    <th>Team</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Lando Norris</td>
+                    <td>United Kingdom</td>
+                    <td>McLaren</td>
+                    <td>390</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Oscar Piastri</td>
+                    <td>Australia</td>
+                    <td>McLaren</td>
+                    <td>366</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Max Verstappen</td>
+                    <td>Netherlands</td>
+                    <td>Red Bull</td>
+                    <td>366</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>George Russell</td>
+                    <td>United Kingdom</td>
+                    <td>Mercedes</td>
+                    <td>294</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Charles Leclerc</td>
+                    <td>Monaco</td>
+                    <td>Ferrari</td>
+                    <td>226</td>
+                </tr>
+
+                <tr class="extra">
+                    <td>6</td>
+                    <td>Lewis Hamilton</td>
+                    <td>United Kingdom</td>
+                    <td>Ferrari</td>
+                    <td>152</td>
+                </tr>
+                <tr class="extra">
+                    <td>7</td>
+                    <td>Kimi Antonelli</td>
+                    <td>Italy</td>
+                    <td>Mercedes</td>
+                    <td>137</td>
+                </tr>
+                <tr class="extra">
+                    <td>8</td>
+                    <td>Alexander Albon</td>
+                    <td>Thailand</td>
+                    <td>Williams</td>
+                    <td>73</td>
+                </tr>
+                <tr class="extra">
+                    <td>9</td>
+                    <td>Isack Hadjar</td>
+                    <td>France</td>
+                    <td>Racing Bulls</td>
+                    <td>51</td>
+                </tr>
+                <tr class="extra">
+                    <td>10</td>
+                    <td>Nico Hulkenberg</td>
+                    <td>Germany</td>
+                    <td>Kick Sauber</td>
+                    <td>49</td>
+                </tr>
+                <tr class="extra">
+                    <td>11</td>
+                    <td>Carlos Sainz</td>
+                    <td>Spain</td>
+                    <td>Williams</td>
+                    <td>48</td>
+                </tr>
+                <tr class="extra">
+                    <td>12</td>
+                    <td>Oliver Bearman</td>
+                    <td>United Kingdom</td>
+                    <td>Haas F1 Team</td>
+                    <td>41</td>
+                </tr>
+                <tr class="extra">
+                    <td>13</td>
+                    <td>Fernando Alonso</td>
+                    <td>Spain</td>
+                    <td>Aston Martin</td>
+                    <td>40</td>
+                </tr>
+                <tr class="extra">
+                    <td>14</td>
+                    <td>Liam Lawson</td>
+                    <td>New Zealand</td>
+                    <td>Racing Bulls</td>
+                    <td>36</td>
+                </tr>
+                <tr class="extra">
+                    <td>15</td>
+                    <td>Esteban Ocon</td>
+                    <td>France</td>
+                    <td>Haas F1 Team</td>
+                    <td>32</td>
+                </tr>
+                <tr class="extra">
+                    <td>16</td>
+                    <td>Lance Stroll</td>
+                    <td>Canada</td>
+                    <td>Aston Martin</td>
+                    <td>32</td>
+                </tr>
+                <tr class="extra">
+                    <td>17</td>
+                    <td>Yuki Tsunoda</td>
+                    <td>Japan</td>
+                    <td>Red Bull</td>
+                    <td>28</td>
+                </tr>
+                <tr class="extra">
+                    <td>18</td>
+                    <td>Pierre Gasly</td>
+                    <td>France</td>
+                    <td>Alpine</td>
+                    <td>22</td>
+                </tr>
+                <tr class="extra">
+                    <td>19</td>
+                    <td>Gabriel Bortoleto</td>
+                    <td>Brazil</td>
+                    <td>Kick Sauber</td>
+                    <td>19</td>
+                </tr>
+                <tr class="extra">
+                    <td>20</td>
+                    <td>Franco Colapinto</td>
+                    <td>Argentina</td>
+                    <td>Alpine</td>
+                    <td>0</td>
+                </tr>
+                <tr class="extra">
+                    <td>21</td>
+                    <td>Jack Doohan</td>
+                    <td>Australia</td>
+                    <td>Alpine</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="toggle-standings">Show All ▼</button>
+
+
+
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-3">
+                <h3 class="section-title">Team Championship</h3>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-lg-4 team-rank">
+                    <div class="card-stat team-mclaren" style="height: 280px;">
+                        <div class="card-media"
+                            style="background:url('https://media.formula1.com/image/upload/c_lfill,h_262/q_auto/d_common:f1:2025:fallback:car:2025fallbackcarright.webp/v1740000000/common/f1/2025/mclaren/2025mclarencarright.webp')">
+                        </div>
+                        <div class="rank-overlay" style="background-image: url('3d/rank-team.png')"></div>
+                        <div class="card-content-l">
+                            <div class="rank 1st fw-bold" style="font-size: 30px">1st</div>
+                            <div class="team text-white" style="font-size: 15px">Mclaren</div>
+                            <div class="points fw-bold text-white" style="font-size: 30px">756 pts</div>
+                        </div>
+                        <div class="card-content-r">
+                            <div class="name text-white" style="font-size: 20px;">Lando <b>Norris</b></div>
+                            <div class="name text-white" style="font-size: 20px">Oscar <b>Piastri</b></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 team-rank">
+                    <div class="card-stat team-mercedes" style="height: 280px;">
+                        <div class="card-media"
+                            style="background:url('https://media.formula1.com/image/upload/c_lfill,h_262/q_auto/d_common:f1:2025:fallback:car:2025fallbackcarright.webp/v1740000000/common/f1/2025/mercedes/2025mercedescarright.webp')">
+                        </div>
+                        <div class="rank-overlay" style="background-image: url('3d/rank-team.png')"></div>
+                        <div class="card-content-l">
+                            <div class="rank 1st fw-bold" style="font-size: 30px">2nd</div>
+                            <div class="team text-white" style="font-size: 15px">Mercedes</div>
+                            <div class="points fw-bold text-white" style="font-size: 30px">431 pts</div>
+                        </div>
+                        <div class="card-content-r">
+                            <div class="name text-white" style="font-size: 20px">George <b>Russell</b></div>
+                            <div class="name text-white" style="font-size: 20px">Kimi <b>Antonelli</b></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 team-rank">
+                    <div class="card-stat team-redbull" style="height: 280px;">
+                        <div class="card-media"
+                            style="background:url('https://media.formula1.com/image/upload/c_lfill,h_262/q_auto/d_common:f1:2025:fallback:car:2025fallbackcarright.webp/v1740000000/common/f1/2025/redbullracing/2025redbullracingcarright.webp')">
+                        </div>
+                        <div class="rank-overlay" style="background-image: url('3d/rank-team.png')"></div>
+                        <div class="card-content-l">
+                            <div class="rank 1st fw-bold" style="font-size: 30px">3rd</div>
+                            <div class="team text-white" style="font-size: 15px">Red Bull</div>
+                            <div class="points fw-bold text-white" style="font-size: 30px">391 pts</div>
+                        </div>
+                        <div class="card-content-r">
+                            <div class="name text-white" style="font-size: 20px">Max <b>Verstappen</b></div>
+                            <div class="name text-white" style="font-size: 20px">Yuki <b>Tsunoda</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calendar" class="bg-dark">
+        <div class="geo-bg-wrapper">
+            <div class="geo-bg" aria-hidden="true">
+                <svg width="100%" height="100%" viewBox="0 0 604 604" preserveAspectRatio="xMidYMid slice"
+                    role="presentation" aria-hidden="true">
+                    <g class="colors-module_fill_colour-static-static-1__29U2y">
+                        <path d="M498.887 64.6914L563.251 0.324951H547.162L482.793 64.6914H498.887Z"></path>
+                        <path d="M373.131 138.985H389.222L463.51 64.6914H447.422L373.131 138.985Z"></path>
+                        <path d="M539.408 94.5181H507.037L398.811 202.749H431.181L539.408 94.5181Z"></path>
+                        <path
+                            d="M502.781 94.5181H468.244L360.024 202.742H349.31L210.479 341.581H221.802L360.629 202.749H394.555L502.781 94.5181Z">
+                        </path>
+                        <path d="M267.781 370.643L376.011 262.417H341.469L233.243 370.643H267.781Z"></path>
+                        <path d="M90.6777 237.31L283.362 44.6238H248.82L56.1357 237.31H90.6777Z"></path>
+                        <path d="M87.8858 112.728L200.286 0.324951H183.117L70.7139 112.728H87.8858Z"></path>
+                        <path d="M545.048 0.324951H527.878L463.51 64.6914H480.682L545.048 0.324951Z"></path>
+                        <path d="M0 282.12V293.438L56.1353 237.31H44.8123L0 282.12Z"></path>
+                        <path d="M353.848 138.985H371.017L445.311 64.6914H428.139L353.848 138.985Z"></path>
+                        <path d="M30.5937 308.631L0 339.225V355.318L46.6874 308.631H30.5937Z"></path>
+                        <path d="M279.76 155.594H255.605L3.58594 407.605H27.7468L279.76 155.594Z"></path>
+                        <path d="M0 180.65V196.742L65.027 131.713H48.9354L0 180.65Z"></path>
+                        <path d="M94.9258 237.31H127.297L319.98 44.6238H287.612L94.9258 237.31Z"></path>
+                        <path d="M0 319.943V337.113L28.4821 308.631H11.3102L0 319.943Z"></path>
+                        <path d="M196.664 380.474L86.1133 491.025H97.4362L207.987 380.474H196.664Z"></path>
+                        <path d="M31.2457 237.31L0 268.555V280.635L43.325 237.31H31.2457Z"></path>
+                        <path d="M269.289 204.999H278.292L344.305 138.985H335.303L269.289 204.999Z"></path>
+                        <path d="M151.994 341.575L218.008 275.563H209.005L142.998 341.575H151.994Z"></path>
+                        <path d="M279.4 204.999H287.834L353.848 138.985H345.412L279.4 204.999Z"></path>
+                        <path d="M603.206 402.161H591.889L500.253 493.797H511.569L603.206 402.161Z"></path>
+                        <path d="M93.5768 548.891L38.1426 604.325H54.2342L109.664 548.891H93.5768Z"></path>
+                        <path d="M558.188 382.925L604 337.113V319.943L541.022 382.925H558.188Z"></path>
+                        <path d="M587.604 298.54H598.926L604 293.466V282.143L587.604 298.54Z"></path>
+                        <path d="M604 339.225L560.3 382.925H576.394L604 355.318V339.225Z"></path>
+                        <path d="M54.2343 0.324951H38.1427L19.2832 19.1844H35.3769L54.2343 0.324951Z"></path>
+                        <path d="M88.214 0.324951H79.2115L29.6816 49.8548H38.6842L88.214 0.324951Z"></path>
+                        <path d="M29.6817 49.8547H18.3651L0 68.2199V79.5364L29.6817 49.8547Z"></path>
+                        <path d="M0 54.6532V66.7283L16.8736 49.8547H4.80064L0 54.6532Z"></path>
+                        <path d="M486.686 493.797H498.761L590.397 402.161H578.324L486.686 493.797Z"></path>
+                        <path
+                            d="M204.68 454.276L130.393 528.569H146.48L220.767 454.282H232.847L316.486 370.643H304.404L220.772 454.276H204.68Z">
+                        </path>
+                        <path d="M314.366 434.956L144.999 604.325H161.093L330.46 434.956H314.366Z"></path>
+                        <path d="M380.262 262.417L272.036 370.643H304.405L412.631 262.417H380.262Z"></path>
+                        <path d="M268.638 581.3H291.277L574.037 298.54H551.398L268.638 581.3Z"></path>
+                        <path d="M74.2936 548.891L18.8594 604.325H36.0292L91.457 548.891H74.2936Z"></path>
+                        <path d="M375.214 545.341L525.362 395.2H508.192L358.049 545.341H375.214Z"></path>
+                        <path d="M574.037 298.54H586.119L604 280.658V268.579L574.037 298.54Z"></path>
+                        <path d="M317.971 370.643L234.332 454.282H245.655L329.294 370.643H317.971Z"></path>
+                        <path d="M295.083 434.956L125.716 604.325H142.886L312.254 434.956H295.083Z"></path>
+                        <path d="M282.737 155.594L30.7197 407.605H53.3592L305.377 155.594H282.737Z"></path>
+                        <path d="M143.934 548.605H134.932L79.2119 604.325H88.2144L143.934 548.605Z"></path>
+                        <path d="M223.311 581.3H206.139L183.116 604.325H200.286L223.311 581.3Z"></path>
+                        <path d="M0 161.367V178.535L46.8216 131.713H29.6519L0 161.367Z"></path>
+                        <path d="M527.475 395.2L377.326 545.341H393.42L543.567 395.2H527.475Z"></path>
+                        <path d="M548.428 298.54H524.267L241.511 581.3H265.667L548.428 298.54Z"></path>
+                        <path d="M241.511 581.3H225.423L202.4 604.325H218.49L241.511 581.3Z"></path>
+                        <path
+                            d="M72.5486 491.025H84.628L195.179 380.474H183.1L72.5465 491.025H56.4591L0 547.487V563.576L72.5486 491.025Z">
+                        </path>
+                        <path d="M39.792 49.8548H48.232L97.7576 0.324951H89.3219L39.792 49.8548Z"></path>
+                        <path d="M106.06 19.9813H123.231L142.886 0.324951H125.716L106.06 19.9813Z"></path>
+                        <path d="M54.3475 491.025H37.1756L0 528.203V545.373L54.3475 491.025Z"></path>
+                        <path d="M604 493.574V484.573L548.05 540.523H557.052L604 493.574Z"></path>
+                        <path d="M558.16 540.523H566.594L603.999 503.117V494.684L558.16 540.523Z"></path>
+                        <path d="M604.001 563.576V547.487L547.162 604.325H563.254L604.001 563.576Z"></path>
+                        <path d="M36.0293 0.324951H18.8595L0 19.1844H17.1698L36.0293 0.324951Z"></path>
+                        <path d="M604 545.373V528.203L527.878 604.325H545.048L604 545.373Z"></path>
+                        <path d="M418.31 545.341H406.987L348.007 604.325H359.326L418.31 545.341Z"></path>
+                        <path d="M591.19 460.129H579.117L434.917 604.325H446.996L591.19 460.129Z"></path>
+                        <path d="M405.502 545.341H393.42L334.44 604.325H346.518L405.502 545.341Z"></path>
+                        <path d="M604 460.129H592.681L448.483 604.325H459.804L604 460.129Z"></path>
+                        <path d="M125.343 19.9813H141.437L161.093 0.324951H144.999L125.343 19.9813Z"></path>
+                        <path d="M153.473 548.605H145.04L89.3223 604.325H97.758L153.473 548.605Z"></path>
+                        <path d="M119.916 418.579L196.914 341.575H180.826L103.822 418.579H115.269H119.916Z"></path>
+                        <path d="M202.566 454.276H185.397L111.109 528.57H128.279L202.566 454.276Z"></path>
+                        <path d="M527.54 225.068H515.46L379.864 360.669H391.946L527.54 225.068Z"></path>
+                        <path d="M347.825 202.742H335.746L196.913 341.575L208.995 341.581L347.825 202.742Z"></path>
+                        <path d="M66.0135 418.562L0 484.573V493.574L75.0097 418.562H66.0135Z"></path>
+                        <path d="M514.867 187.952L440.58 262.246H456.667L530.961 187.952H514.867Z"></path>
+                        <path d="M76.1219 418.562L0 494.684V503.118L84.5555 418.562H76.1219Z"></path>
+                        <path d="M219.116 275.563L153.103 341.575H161.543L227.556 275.563H219.116Z"></path>
+                        <path d="M178.712 341.575H161.543L84.5557 418.562L101.708 418.579L178.712 341.575Z"></path>
+                        <path d="M328.425 19.9068H339.741L359.323 0.324951H348.007L328.425 19.9068Z"></path>
+                        <path d="M89.9971 112.728H106.091L218.489 0.324951H202.4L89.9971 112.728Z"></path>
+                        <path d="M324.832 110.407H336.914L446.996 0.324951H434.919L324.832 110.407Z"></path>
+                        <path d="M338.399 110.407H349.722L459.805 0.324951H448.484L338.399 110.407Z"></path>
+                        <path d="M314.858 19.9068H326.933L346.515 0.324951H334.44L314.858 19.9068Z"></path>
+                        <path d="M484.268 187.952H495.584L604 79.5365V68.22L484.268 187.952Z"></path>
+                        <path d="M438.46 262.246L512.754 187.952H495.584L421.297 262.246H438.46Z"></path>
+                        <path d="M470.701 187.952H482.776L604 66.7284V54.6533L470.701 187.952Z"></path>
+                        <path d="M559.591 225.087H575.685L604 196.769V180.674L559.591 225.087Z"></path>
+                        <path
+                            d="M540.331 225.088H557.477L604 178.56V161.395L540.324 225.068H529.025L393.431 360.669H404.747L540.331 225.088Z">
+                        </path>
+                    </g>
                 </svg>
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link px-3" href="#standings">Standings</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#calendar">Calendar</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#drivers">Drivers</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-3 px-3" href="tickets.html">Tickets</a></li>
-                </ul>
             </div>
         </div>
-    </nav>
 
-    <div class="container live-strip d-flex align-items-center gap-3">
-        <div class="live-pill">LIVE</div>
-        <div class="small text-white-50">Practice 2 — Silverstone · 12:30 GMT</div>
-        <div class="small text-white-50">|</div>
-        <div class="small text-white-50">Hamilton P1 · Verstappen P2 · Norris P3</div>
-    </div>
-</header>
-
-<section id="hero-3d">
-    <div id="f1-canvas-container">
-        <canvas id="f1-canvas"></canvas>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-caption" style="margin: 10px; padding: 20px; background:#0f0f0f; border:1px solid rgba(255,255,255,0.04); border-radius:.5rem; padding:1rem">
-        <h1 class="fw-bold" style="color: #b80b07; font-size: 200%; margin: 0">Red Bull Concept</h1>
-        <p style="margin: 0; color: rgba(255,255,255,0.7)">Experience Formula 1 racing</p>
-    </div>
-</section>
-
-<section id="standings">
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-end mb-3">
-            <h3 class="section-title">Drivers Championship</h3>
-        </div>
-
-        <div class="row g-3">
-            <div class="col-lg-4 ranking">
-                <div class="card-stat team-mclaren"  style="height: 300px;">
-                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/mclaren/lannor01/2025mclarenlannor01right.webp')"></div>
-                    <div class="rank-overlay" style="background-image: url('3d/rank-driver.png')"></div>
-                    <div class="card-content">
-                        <div class="rank 1st fw-bold"  style="font-size: 30px">1st</div>
-                        <div class="team text-white" style="font-size: 15px">Mclaren</div>
-                        <div class="name text-white" style="font-size: 20px">Lando <b>Norris</b></div>
-                        <div class="points fw-bold text-white"  style="font-size: 30px">390 pts</div>
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center p-3">
+                <h3 class="section-title">Race Calendar</h3>
+                <a class="nav-link px-3" href="calendar.html">View All</a>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="card-stat">
+                        <div class="fw-bold">Belgian GP</div>
+                        <div class="small text-white-50">Spa · 28 Jul</div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 ranking">
-                <div class="card-stat team-mclaren" style="height: 300px;">
-                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,w_314/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/mclaren/oscpia01/2025mclarenoscpia01right.webp')"></div>
-                    <div class="rank-overlay" style="background-image: url('3d/rank-driver.png')"></div>
-                    <div class="card-content">
-                        <div class="rank fw-bold" style="font-size: 30px">2nd</div>
-                        <div class="team text-white" style="font-size: 15px">Mclaren</div>
-                        <div class="name text-white" style="font-size: 20px">Oscar <b>Piastri</b></div>
-                        <div class="points fw-bold text-white" style="font-size: 30px">390 pts</div>
+                <div class="col-md-4">
+                    <div class="card-stat">
+                        <div class="fw-bold">Italian GP</div>
+                        <div class="small text-white-50">Monza · 04 Aug</div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 ranking">
-                <div class="card-stat team-redbull"  style="height: 300px;">
-                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/redbullracing/maxver01/2025redbullracingmaxver01right.webp')"></div>
-                    <div class="rank-overlay" style="background-image: url('3d/rank-driver.png')"></div>
-                    <div class="card-content">
-                        <div class="rank fw-bold" style="font-size: 30px">3rd</div>
-                        <div class="team text-white" style="font-size: 15px">Red Bull</div>
-                        <div class="name text-white" style="font-size: 20px">Max <b>Verstappen</b></div>
-                        <div class="points fw-bold text-white" style="font-size: 30px">366 pts</div>
+                <div class="col-md-4">
+                    <div class="card-stat">
+                        <div class="fw-bold">Singapore GP</div>
+                        <div class="small text-white-50">Marina Bay · 18 Sep</div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-  <table class="f1-table">
-    <colgroup>
-      <col>
-      <col> 
-      <col>
-      <col> 
-      <col> 
-    </colgroup>
+    <section id="drivers">
 
-    <thead>
-      <tr>
-        <th>Pos</th>
-        <th>Driver</th>
-        <th>Nationality</th>
-        <th>Team</th>
-        <th>Points</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr><td>1</td><td>Lando Norris</td><td>United Kingdom</td><td>McLaren</td><td>390</td></tr>
-      <tr><td>2</td><td>Oscar Piastri</td><td>Australia</td><td>McLaren</td><td>366</td></tr>
-      <tr><td>3</td><td>Max Verstappen</td><td>Netherlands</td><td>Red Bull</td><td>366</td></tr>
-      <tr><td>4</td><td>George Russell</td><td>United Kingdom</td><td>Mercedes</td><td>294</td></tr>
-      <tr><td>5</td><td>Charles Leclerc</td><td>Monaco</td><td>Ferrari</td><td>226</td></tr>
-
-      <tr class="extra"><td>6</td><td>Lewis Hamilton</td><td>United Kingdom</td><td>Ferrari</td><td>152</td></tr>
-      <tr class="extra"><td>7</td><td>Kimi Antonelli</td><td>Italy</td><td>Mercedes</td><td>137</td></tr>
-      <tr class="extra"><td>8</td><td>Alexander Albon</td><td>Thailand</td><td>Williams</td><td>73</td></tr>
-      <tr class="extra"><td>9</td><td>Isack Hadjar</td><td>France</td><td>Racing Bulls</td><td>51</td></tr>
-      <tr class="extra"><td>10</td><td>Nico Hulkenberg</td><td>Germany</td><td>Kick Sauber</td><td>49</td></tr>
-      <tr class="extra"><td>11</td><td>Carlos Sainz</td><td>Spain</td><td>Williams</td><td>48</td></tr>
-      <tr class="extra"><td>12</td><td>Oliver Bearman</td><td>United Kingdom</td><td>Haas F1 Team</td><td>41</td></tr>
-      <tr class="extra"><td>13</td><td>Fernando Alonso</td><td>Spain</td><td>Aston Martin</td><td>40</td></tr>
-      <tr class="extra"><td>14</td><td>Liam Lawson</td><td>New Zealand</td><td>Racing Bulls</td><td>36</td></tr>
-      <tr class="extra"><td>15</td><td>Esteban Ocon</td><td>France</td><td>Haas F1 Team</td><td>32</td></tr>
-      <tr class="extra"><td>16</td><td>Lance Stroll</td><td>Canada</td><td>Aston Martin</td><td>32</td></tr>
-      <tr class="extra"><td>17</td><td>Yuki Tsunoda</td><td>Japan</td><td>Red Bull</td><td>28</td></tr>
-      <tr class="extra"><td>18</td><td>Pierre Gasly</td><td>France</td><td>Alpine</td><td>22</td></tr>
-      <tr class="extra"><td>19</td><td>Gabriel Bortoleto</td><td>Brazil</td><td>Kick Sauber</td><td>19</td></tr>
-      <tr class="extra"><td>20</td><td>Franco Colapinto</td><td>Argentina</td><td>Alpine</td><td>0</td></tr>
-      <tr class="extra"><td>21</td><td>Jack Doohan</td><td>Australia</td><td>Alpine</td><td>0</td></tr>
-    </tbody>
-  </table>
-<button id="toggle-standings">Show All ▼</button>
-
-
-
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-end mb-3">
-            <h3 class="section-title">Team Championship</h3>
+        <div class="container">
+            <h3 class="section-title">Featured Drivers</h3>
+            <div class="row g-3">
+            </div>
         </div>
+    </section>
 
-        <div class="row g-3">
-            <div class="col-lg-4 team-rank">
-                <div class="card-stat team-mclaren"  style="height: 280px;">
-                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,h_262/q_auto/d_common:f1:2025:fallback:car:2025fallbackcarright.webp/v1740000000/common/f1/2025/mclaren/2025mclarencarright.webp')"></div>
-                    <div class="rank-overlay" style="background-image: url('3d/rank-team.png')"></div>
-                    <div class="card-content-l">
-                        <div class="rank 1st fw-bold"  style="font-size: 30px">1st</div>
-                        <div class="team text-white" style="font-size: 15px">Mclaren</div>
-                        <div class="points fw-bold text-white"  style="font-size: 30px">756 pts</div>
-                    </div>
-                    <div class="card-content-r">
-                        <div class="name text-white" style="font-size: 20px;">Lando <b>Norris</b></div>
-                        <div class="name text-white" style="font-size: 20px">Oscar <b>Piastri</b></div>
+    <section id="partners" class="bg-dark">
+        <div class="container">
+            <h3 class="section-title">Sponsors</h3>
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <div class="sponsor-slab">
+                        <div class="partner-svg">
+                            <img class="partner-logo"
+                                src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/fom-website/2020/sponsors/lvmh.webp"
+                                alt="Sponsor 1" loading="lazy">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-4 team-rank">
-                <div class="card-stat team-mercedes" style="height: 280px;">
-                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,h_262/q_auto/d_common:f1:2025:fallback:car:2025fallbackcarright.webp/v1740000000/common/f1/2025/mercedes/2025mercedescarright.webp')"></div>
-                    <div class="rank-overlay" style="background-image: url('3d/rank-team.png')"></div>
-                    <div class="card-content-l">
-                        <div class="rank 1st fw-bold"  style="font-size: 30px">2nd</div>
-                        <div class="team text-white" style="font-size: 15px">Mercedes</div>
-                        <div class="points fw-bold text-white"  style="font-size: 30px">431 pts</div>
-                    </div>
-                    <div class="card-content-r">
-                        <div class="name text-white" style="font-size: 20px">George <b>Russell</b></div>
-                        <div class="name text-white" style="font-size: 20px">Kimi <b>Antonelli</b></div>
+                <div class="col-6 col-md-3">
+                    <div class="sponsor-slab">
+                        <div class="partner-svg">
+                            <img class="partner-logo"
+                                src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/content/dam/fom-website/2020/sponsors/AWS%20GLOBAL.webp"
+                                alt="Sponsor 2" loading="lazy">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-4 team-rank">
-                <div class="card-stat team-redbull"  style="height: 280px;">
-                    <div class="card-media" style="background:url('https://media.formula1.com/image/upload/c_lfill,h_262/q_auto/d_common:f1:2025:fallback:car:2025fallbackcarright.webp/v1740000000/common/f1/2025/redbullracing/2025redbullracingcarright.webp')"></div>
-                    <div class="rank-overlay" style="background-image: url('3d/rank-team.png')"></div>
-                    <div class="card-content-l">
-                        <div class="rank 1st fw-bold"  style="font-size: 30px">3rd</div>
-                        <div class="team text-white" style="font-size: 15px">Red Bull</div>
-                        <div class="points fw-bold text-white"  style="font-size: 30px">391 pts</div>
+                <div class="col-6 col-md-3">
+                    <div class="sponsor-slab">
+                        <div class="partner-svg">
+                            <img class="partner-logo"
+                                src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/common/f1/logo/heineken/logoheinekenoutlinedlight.webp"
+                                alt="Sponsor 3" loading="lazy">
+                        </div>
                     </div>
-                    <div class="card-content-r">
-                        <div class="name text-white" style="font-size: 20px">Max <b>Verstappen</b></div>
-                        <div class="name text-white" style="font-size: 20px">Yuki <b>Tsunoda</b></div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="sponsor-slab">
+                        <div class="partner-svg">
+                            <img class="partner-logo"
+                                src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/fom-website/2020/sponsors/nestle.webp"
+                                alt="Sponsor 4" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="sponsor-slab">
+                        <div class="partner-svg">
+                            <img class="partner-logo"
+                                src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/content/dam/fom-website/2020/sponsors/qatar.webp"
+                                alt="Sponsor 4" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="sponsor-slab">
+                        <div class="partner-svg">
+                            <img class="partner-logo"
+                                src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/content/dam/fom-website/2020/sponsors/aramco.webp"
+                                alt="Sponsor 4" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="sponsor-slab">
+                        <div class="partner-svg">
+                            <img class="partner-logo"
+                                src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/fom-website/2020/sponsors/Amex.webp"
+                                alt="Sponsor 4" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="sponsor-slab">
+                        <div class="partner-svg">
+                            <img class="partner-logo"
+                                src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/fom-website/2020/sponsors/pepsico.webp"
+                                alt="Sponsor 4" loading="lazy">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="calendar" class="bg-dark">
-    <div class="geo-bg-wrapper">
-        <div class="geo-bg" aria-hidden="true">
-            <svg width="100%" height="100%" viewBox="0 0 604 604" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
-                <g class="colors-module_fill_colour-static-static-1__29U2y"><path d="M498.887 64.6914L563.251 0.324951H547.162L482.793 64.6914H498.887Z"></path><path d="M373.131 138.985H389.222L463.51 64.6914H447.422L373.131 138.985Z"></path><path d="M539.408 94.5181H507.037L398.811 202.749H431.181L539.408 94.5181Z"></path><path d="M502.781 94.5181H468.244L360.024 202.742H349.31L210.479 341.581H221.802L360.629 202.749H394.555L502.781 94.5181Z"></path><path d="M267.781 370.643L376.011 262.417H341.469L233.243 370.643H267.781Z"></path><path d="M90.6777 237.31L283.362 44.6238H248.82L56.1357 237.31H90.6777Z"></path><path d="M87.8858 112.728L200.286 0.324951H183.117L70.7139 112.728H87.8858Z"></path><path d="M545.048 0.324951H527.878L463.51 64.6914H480.682L545.048 0.324951Z"></path><path d="M0 282.12V293.438L56.1353 237.31H44.8123L0 282.12Z"></path><path d="M353.848 138.985H371.017L445.311 64.6914H428.139L353.848 138.985Z"></path><path d="M30.5937 308.631L0 339.225V355.318L46.6874 308.631H30.5937Z"></path><path d="M279.76 155.594H255.605L3.58594 407.605H27.7468L279.76 155.594Z"></path><path d="M0 180.65V196.742L65.027 131.713H48.9354L0 180.65Z"></path><path d="M94.9258 237.31H127.297L319.98 44.6238H287.612L94.9258 237.31Z"></path><path d="M0 319.943V337.113L28.4821 308.631H11.3102L0 319.943Z"></path><path d="M196.664 380.474L86.1133 491.025H97.4362L207.987 380.474H196.664Z"></path><path d="M31.2457 237.31L0 268.555V280.635L43.325 237.31H31.2457Z"></path><path d="M269.289 204.999H278.292L344.305 138.985H335.303L269.289 204.999Z"></path><path d="M151.994 341.575L218.008 275.563H209.005L142.998 341.575H151.994Z"></path><path d="M279.4 204.999H287.834L353.848 138.985H345.412L279.4 204.999Z"></path><path d="M603.206 402.161H591.889L500.253 493.797H511.569L603.206 402.161Z"></path><path d="M93.5768 548.891L38.1426 604.325H54.2342L109.664 548.891H93.5768Z"></path><path d="M558.188 382.925L604 337.113V319.943L541.022 382.925H558.188Z"></path><path d="M587.604 298.54H598.926L604 293.466V282.143L587.604 298.54Z"></path><path d="M604 339.225L560.3 382.925H576.394L604 355.318V339.225Z"></path><path d="M54.2343 0.324951H38.1427L19.2832 19.1844H35.3769L54.2343 0.324951Z"></path><path d="M88.214 0.324951H79.2115L29.6816 49.8548H38.6842L88.214 0.324951Z"></path><path d="M29.6817 49.8547H18.3651L0 68.2199V79.5364L29.6817 49.8547Z"></path><path d="M0 54.6532V66.7283L16.8736 49.8547H4.80064L0 54.6532Z"></path><path d="M486.686 493.797H498.761L590.397 402.161H578.324L486.686 493.797Z"></path><path d="M204.68 454.276L130.393 528.569H146.48L220.767 454.282H232.847L316.486 370.643H304.404L220.772 454.276H204.68Z"></path><path d="M314.366 434.956L144.999 604.325H161.093L330.46 434.956H314.366Z"></path><path d="M380.262 262.417L272.036 370.643H304.405L412.631 262.417H380.262Z"></path><path d="M268.638 581.3H291.277L574.037 298.54H551.398L268.638 581.3Z"></path><path d="M74.2936 548.891L18.8594 604.325H36.0292L91.457 548.891H74.2936Z"></path><path d="M375.214 545.341L525.362 395.2H508.192L358.049 545.341H375.214Z"></path><path d="M574.037 298.54H586.119L604 280.658V268.579L574.037 298.54Z"></path><path d="M317.971 370.643L234.332 454.282H245.655L329.294 370.643H317.971Z"></path><path d="M295.083 434.956L125.716 604.325H142.886L312.254 434.956H295.083Z"></path><path d="M282.737 155.594L30.7197 407.605H53.3592L305.377 155.594H282.737Z"></path><path d="M143.934 548.605H134.932L79.2119 604.325H88.2144L143.934 548.605Z"></path><path d="M223.311 581.3H206.139L183.116 604.325H200.286L223.311 581.3Z"></path><path d="M0 161.367V178.535L46.8216 131.713H29.6519L0 161.367Z"></path><path d="M527.475 395.2L377.326 545.341H393.42L543.567 395.2H527.475Z"></path><path d="M548.428 298.54H524.267L241.511 581.3H265.667L548.428 298.54Z"></path><path d="M241.511 581.3H225.423L202.4 604.325H218.49L241.511 581.3Z"></path><path d="M72.5486 491.025H84.628L195.179 380.474H183.1L72.5465 491.025H56.4591L0 547.487V563.576L72.5486 491.025Z"></path><path d="M39.792 49.8548H48.232L97.7576 0.324951H89.3219L39.792 49.8548Z"></path><path d="M106.06 19.9813H123.231L142.886 0.324951H125.716L106.06 19.9813Z"></path><path d="M54.3475 491.025H37.1756L0 528.203V545.373L54.3475 491.025Z"></path><path d="M604 493.574V484.573L548.05 540.523H557.052L604 493.574Z"></path><path d="M558.16 540.523H566.594L603.999 503.117V494.684L558.16 540.523Z"></path><path d="M604.001 563.576V547.487L547.162 604.325H563.254L604.001 563.576Z"></path><path d="M36.0293 0.324951H18.8595L0 19.1844H17.1698L36.0293 0.324951Z"></path><path d="M604 545.373V528.203L527.878 604.325H545.048L604 545.373Z"></path><path d="M418.31 545.341H406.987L348.007 604.325H359.326L418.31 545.341Z"></path><path d="M591.19 460.129H579.117L434.917 604.325H446.996L591.19 460.129Z"></path><path d="M405.502 545.341H393.42L334.44 604.325H346.518L405.502 545.341Z"></path><path d="M604 460.129H592.681L448.483 604.325H459.804L604 460.129Z"></path><path d="M125.343 19.9813H141.437L161.093 0.324951H144.999L125.343 19.9813Z"></path><path d="M153.473 548.605H145.04L89.3223 604.325H97.758L153.473 548.605Z"></path><path d="M119.916 418.579L196.914 341.575H180.826L103.822 418.579H115.269H119.916Z"></path><path d="M202.566 454.276H185.397L111.109 528.57H128.279L202.566 454.276Z"></path><path d="M527.54 225.068H515.46L379.864 360.669H391.946L527.54 225.068Z"></path><path d="M347.825 202.742H335.746L196.913 341.575L208.995 341.581L347.825 202.742Z"></path><path d="M66.0135 418.562L0 484.573V493.574L75.0097 418.562H66.0135Z"></path><path d="M514.867 187.952L440.58 262.246H456.667L530.961 187.952H514.867Z"></path><path d="M76.1219 418.562L0 494.684V503.118L84.5555 418.562H76.1219Z"></path><path d="M219.116 275.563L153.103 341.575H161.543L227.556 275.563H219.116Z"></path><path d="M178.712 341.575H161.543L84.5557 418.562L101.708 418.579L178.712 341.575Z"></path><path d="M328.425 19.9068H339.741L359.323 0.324951H348.007L328.425 19.9068Z"></path><path d="M89.9971 112.728H106.091L218.489 0.324951H202.4L89.9971 112.728Z"></path><path d="M324.832 110.407H336.914L446.996 0.324951H434.919L324.832 110.407Z"></path><path d="M338.399 110.407H349.722L459.805 0.324951H448.484L338.399 110.407Z"></path><path d="M314.858 19.9068H326.933L346.515 0.324951H334.44L314.858 19.9068Z"></path><path d="M484.268 187.952H495.584L604 79.5365V68.22L484.268 187.952Z"></path><path d="M438.46 262.246L512.754 187.952H495.584L421.297 262.246H438.46Z"></path><path d="M470.701 187.952H482.776L604 66.7284V54.6533L470.701 187.952Z"></path><path d="M559.591 225.087H575.685L604 196.769V180.674L559.591 225.087Z"></path><path d="M540.331 225.088H557.477L604 178.56V161.395L540.324 225.068H529.025L393.431 360.669H404.747L540.331 225.088Z"></path></g>
-            </svg>
-        </div>
-    </div>
-
-    <div class="container">
-        <h3 class="section-title">Race Calendar</h3>
-        <div class="row g-3">
-            <div class="col-md-4">
-                <div class="card-stat">
-                    <div class="fw-bold">Belgian GP</div>
-                    <div class="small text-white-50">Spa · 28 Jul</div>
+    <footer>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <strong>F1</strong>
+                    <div class="small">© <span id="year"></span> Formula one. All rights reserved.</div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-stat">
-                    <div class="fw-bold">Italian GP</div>
-                    <div class="small text-white-50">Monza · 04 Aug</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-stat">
-                    <div class="fw-bold">Singapore GP</div>
-                    <div class="small text-white-50">Marina Bay · 18 Sep</div>
+                <div class="col-md-6 text-md-end">
+                    <a class="text-decoration-none text-white-50 me-3" href="#">Privacy</a>
+                    <a class="text-decoration-none text-white-50" href="#">Contact</a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </footer>
 
-<section id="drivers">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/f1-3d.js"></script>
 
-    <div class="container">
-        <h3 class="section-title">Featured Drivers</h3>
-        <div class="row g-3">
-        </div>
-    </div>
-</section>
+    <script>
+        const btn = document.getElementById('toggle-standings');
+        const extraRows = document.querySelectorAll('.f1-table .extra');
 
-<section id="partners" class="bg-dark">
-    <div class="container">
-        <h3 class="section-title">Sponsors</h3>
-        <div class="row g-3">
-            <div class="col-6 col-md-3">
-                <div class="sponsor-slab">
-                    <div class="partner-svg">
-                        <img class="partner-logo" src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/fom-website/2020/sponsors/lvmh.webp" alt="Sponsor 1" loading="lazy">
-                    </div>
-                </div>
-            </div>
+        btn.addEventListener('click', () => {
+            const isHidden = extraRows[0].style.display === 'none' || extraRows[0].style.display === '';
 
-            <div class="col-6 col-md-3">
-                <div class="sponsor-slab">
-                    <div class="partner-svg">
-                        <img class="partner-logo" src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/content/dam/fom-website/2020/sponsors/AWS%20GLOBAL.webp" alt="Sponsor 2" loading="lazy">
-                    </div>
-                </div>
-            </div>
+            extraRows.forEach(row => {
+                row.style.display = isHidden ? 'table-row' : 'none';
+            });
 
-            <div class="col-6 col-md-3">
-                <div class="sponsor-slab">
-                    <div class="partner-svg">
-                        <img class="partner-logo" src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/common/f1/logo/heineken/logoheinekenoutlinedlight.webp" alt="Sponsor 3" loading="lazy">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-                <div class="sponsor-slab">
-                    <div class="partner-svg">
-                        <img class="partner-logo" src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/fom-website/2020/sponsors/nestle.webp" alt="Sponsor 4" loading="lazy">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-                <div class="sponsor-slab">
-                    <div class="partner-svg">
-                        <img class="partner-logo" src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/content/dam/fom-website/2020/sponsors/qatar.webp" alt="Sponsor 4" loading="lazy">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-                <div class="sponsor-slab">
-                    <div class="partner-svg">
-                        <img class="partner-logo" src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/content/dam/fom-website/2020/sponsors/aramco.webp" alt="Sponsor 4" loading="lazy">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-                <div class="sponsor-slab">
-                    <div class="partner-svg">
-                        <img class="partner-logo" src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/fom-website/2020/sponsors/Amex.webp" alt="Sponsor 4" loading="lazy">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-                <div class="sponsor-slab">
-                    <div class="partner-svg">
-                        <img class="partner-logo" src="https://media.formula1.com/image/upload/e_trim/c_fit,w_160,h_90/q_auto/v1740000000/fom-website/2020/sponsors/pepsico.webp" alt="Sponsor 4" loading="lazy">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <strong>F1</strong>
-                <div class="small">© <span id="year"></span> Formula one. All rights reserved.</div>
-            </div>
-            <div class="col-md-6 text-md-end">
-                <a class="text-decoration-none text-white-50 me-3" href="#">Privacy</a>
-                <a class="text-decoration-none text-white-50" href="#">Contact</a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script type="module" src="js/f1-3d.js"></script>
-
-<script>
-    const btn = document.getElementById('toggle-standings');
-    const extraRows = document.querySelectorAll('.f1-table .extra');
-
-    btn.addEventListener('click', () => {
-      const isHidden = extraRows[0].style.display === 'none' || extraRows[0].style.display === '';
-      
-      extraRows.forEach(row => {
-        row.style.display = isHidden ? 'table-row' : 'none';
-      });
-      
-      btn.textContent = isHidden ? 'Show Less ▲' : 'Show All ▼';
-    });
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-        a.addEventListener('click', function(e){
-            const t = document.querySelector(this.getAttribute('href'));
-            if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+            btn.textContent = isHidden ? 'Show Less ▲' : 'Show All ▼';
         });
-    });
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-    document.addEventListener('DOMContentLoaded', () => {
-        fetch('json/drivers.json')
-            .then(response => response.json())
-            .then(drivers => {
-                const container = document.querySelector('#drivers .row');
-                drivers.forEach(driver => {
-                    const card = document.createElement('div');
-                    card.className = 'col-sm-6 col-md-3 driver-card';
-                    card.innerHTML = `
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) {
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) {e.preventDefault(); t.scrollIntoView({behavior: 'smooth', block: 'start'});}
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('json/drivers.json')
+                .then(response => response.json())
+                .then(drivers => {
+                    const container = document.querySelector('#drivers .row');
+                    drivers.forEach(driver => {
+                        const card = document.createElement('div');
+                        card.className = 'col-sm-6 col-md-3 driver-card';
+                        card.innerHTML = `
                     <div class="card-stat team-${driver.team.toLowerCase().replace(/\s+/g, '')} text-center">
                         <div class="geo-bg-wrapper">
                             <div class="geo-bg" aria-hidden="true">
@@ -394,12 +649,13 @@
                         </div>
                     </div>
                 `;
-                    container.appendChild(card);
-                });
-            })
-            .catch(error => console.error('Error loading drivers:', error));
-    });
+                        container.appendChild(card);
+                    });
+                })
+                .catch(error => console.error('Error loading drivers:', error));
+        });
 
-</script>
+    </script>
 </body>
+
 </html>

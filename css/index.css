@@ -1,675 +1,778 @@
-:root{
-    --f1-red: #e10600;
-    --f1-dark: #0b0b0b;
-    --muted: #9aa3ad;
+:root {
+	--f1-red: #e10600;
+	--f1-dark: #0b0b0b;
+	--muted: #9aa3ad;
 }
 
-html,body{
-    height:100%
+html,
+body {
+	height: 100%;
 }
 
-body{
-    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-    background:var(--f1-dark);
-    color:#fff;-webkit-font-smoothing:antialiased;
+body {
+	font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+	background: var(--f1-dark);
+	color: #fff;
+	-webkit-font-smoothing: antialiased;
 }
 
-.topbar{
-    background:#060606;
-    border-bottom:1px solid rgba(255,255,255,0.04);
-    padding:.35rem 0
+.topbar {
+	background: #060606;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+	padding: 0.35rem 0;
 }
 
-.brand{
-    font-weight:900;
-    letter-spacing:1px;
-    color:#fff; font-size:1.05rem
+.brand {
+	font-weight: 900;
+	letter-spacing: 1px;
+	color: #fff;
+	font-size: 1.05rem;
 }
 
-.nav-link{
-    color:rgba(255,255,255,0.85)
+.nav-link {
+	color: rgba(255, 255, 255, 0.85);
 }
 
-.nav-link:hover{
-    color:var(--f1-red)
+.nav-link:hover {
+	color: var(--f1-red);
 }
 
-.live-strip{background:#090909; border-top:1px solid rgba(255,255,255,0.03); border-bottom:1px solid rgba(255,255,255,0.03); padding:.4rem 0; font-size:.9rem}
-.live-pill{background:rgba(255,255,255,0.03); padding:.25rem .5rem; border-radius:999px; color:var(--muted); font-weight:600}
-
-.carousel-item{height:60vh; min-height:320px; background-size:cover; background-position:center; position:relative}
-.carousel-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,6,6,0.25), rgba(6,6,6,0.6));}
-.hero-caption{position:absolute; left:2rem; bottom:3.5rem; z-index:2; max-width:720px}
-.hero-title{font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight:800; margin-bottom:.3rem}
-.hero-sub{color:var(--muted); margin-bottom:1rem}
-
-section{padding:3.5rem 0}
-.section-title{color:#fff; font-weight:700; margin-bottom:1rem}
-
-#standings .container{
-    margin-top: 20px;
-    margin-bottom: 20px;
+.live-strip {
+	background: #090909;
+	border-top: 1px solid rgba(255, 255, 255, 0.03);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+	padding: 0.4rem 0;
+	font-size: 0.9rem;
 }
-.card-stat{
-    background:#0f0f0f;
-    border:1px solid rgba(255,255,255,0.04);
-    border-radius:.5rem; padding:1rem
+.live-pill {
+	background: rgba(255, 255, 255, 0.03);
+	padding: 0.25rem 0.5rem;
+	border-radius: 999px;
+	color: var(--muted);
+	font-weight: 600;
 }
 
-.table thead th{
-    border-bottom:1px solid rgba(255,255,255,0.06);
-    color:var(--muted)
+.carousel-item {
+	height: 60vh;
+	min-height: 320px;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+.carousel-overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(6, 6, 6, 0.25), rgba(6, 6, 6, 0.6));
+}
+.hero-caption {
+	position: absolute;
+	left: 2rem;
+	bottom: 3.5rem;
+	z-index: 2;
+	max-width: 720px;
+}
+.hero-title {
+	font-size: clamp(1.6rem, 4vw, 2.8rem);
+	font-weight: 800;
+	margin-bottom: 0.3rem;
+}
+.hero-sub {
+	color: var(--muted);
+	margin-bottom: 1rem;
 }
 
-.sponsor-slab{background:#070707; padding:1rem; border-radius:.5rem; display:flex; gap:1rem; align-items:center; justify-content:center}
+section {
+	padding: 3.5rem 0;
+}
+.section-title {
+	color: #fff;
+	font-weight: 700;
+	margin-bottom: 1rem;
+}
+
+#standings .container {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.card-stat {
+	background: #0f0f0f;
+	border: 1px solid rgba(255, 255, 255, 0.04);
+	border-radius: 0.5rem;
+	padding: 1rem;
+}
+
+.table thead th {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+	color: var(--muted);
+}
+
+.sponsor-slab {
+	background: #070707;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	justify-content: center;
+}
 
 .card-stat .table.table-dark,
 .card-stat .table.table-dark thead th,
 .card-stat .table.table-dark tbody tr,
 .card-stat .table.table-dark td {
-    background: transparent !important;
-    color: inherit !important;
-    border-color: rgba(255, 255, 255, 0.04) !important;
-    position: relative;
+	background: transparent !important;
+	color: inherit !important;
+	border-color: rgba(255, 255, 255, 0.04) !important;
+	position: relative;
 }
 
-.team-redbull {background: linear-gradient(0deg, #033077 0%, #0091ff 100%);}
-.team-ferrari {background: linear-gradient(0deg, #8a0202 0%, #ff0000 100%);}
-.team-mclaren {background: linear-gradient(0deg, #974707 0%, #f48a00 100%);}
-.team-mercedes {background: linear-gradient(0deg, #03705f 0%, #00d7b6 100%);}
-.team-williams {background: linear-gradient(0deg, #073373 0%, #1868db 100%);}
-.team-haas {background: linear-gradient(0deg, #434343 0%, #aeaeae 100%);}
-.team-aston {background: linear-gradient(0deg, #085e43 0%, #229971 100%);}
-.team-racingbulls {background: linear-gradient(0deg, #2d4683 0%, #6c98ff 100%);}
-.team-alpine {background: linear-gradient(0deg, #890393 0%, #d900e8 100%);}
-.team-kick {background: linear-gradient(0deg, #05630c 0%, #01c00e 100%);}
+.team-redbull {
+	background: linear-gradient(0deg, #033077 0%, #0091ff 100%);
+}
+.team-ferrari {
+	background: linear-gradient(0deg, #8a0202 0%, #ff0000 100%);
+}
+.team-mclaren {
+	background: linear-gradient(0deg, #974707 0%, #f48a00 100%);
+}
+.team-mercedes {
+	background: linear-gradient(0deg, #03705f 0%, #00d7b6 100%);
+}
+.team-williams {
+	background: linear-gradient(0deg, #073373 0%, #1868db 100%);
+}
+.team-haas {
+	background: linear-gradient(0deg, #434343 0%, #aeaeae 100%);
+}
+.team-aston {
+	background: linear-gradient(0deg, #085e43 0%, #229971 100%);
+}
+.team-racingbulls {
+	background: linear-gradient(0deg, #2d4683 0%, #6c98ff 100%);
+}
+.team-alpine {
+	background: linear-gradient(0deg, #890393 0%, #d900e8 100%);
+}
+.team-kick {
+	background: linear-gradient(0deg, #05630c 0%, #01c00e 100%);
+}
 
-.ranking .team-mclaren {background: linear-gradient(90deg, #974707 0%, #f48a00 100%);}
-.ranking .team-redbull {background: linear-gradient(90deg, #033077 0%, #0091ff 100%);}
+.ranking .team-mclaren {
+	background: linear-gradient(90deg, #974707 0%, #f48a00 100%);
+}
+.ranking .team-redbull {
+	background: linear-gradient(90deg, #033077 0%, #0091ff 100%);
+}
 
-.first {color: gold}
+.first {
+	color: gold;
+}
 
-.partner-svg{width:90px;height:34px;border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px;box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);}
-.partner-svg img.partner-logo{max-width:100%;max-height:100%;object-fit:contain;display:block;}
+.partner-svg {
+	width: 90px;
+	height: 34px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	padding: 4px;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+.partner-svg img.partner-logo {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	display: block;
+}
 
 #calendar {
-    position: relative;
+	position: relative;
 }
 
 #calendar .geo-bg-wrapper {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+	z-index: 0;
 }
 
 #calendar .geo-bg {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    opacity: 0.15;
-    width: 100%;
-    height: 100%;
-    opacity: 0.15
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	opacity: 0.15;
+	width: 100%;
+	height: 100%;
+	opacity: 0.15;
 }
 
 #calendar .geo-bg svg path {
-    fill: rgba(255,255,255,0.2) !important;
-    transition: fill .2s;
+	fill: rgba(255, 255, 255, 0.2) !important;
+	transition: fill 0.2s;
 }
 
 #calendar .container {
-    position: relative; z-index: 1;
+	position: relative;
+	z-index: 1;
 }
-
 
 .driver-card .card-stat {
-    position: relative;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+	position: relative;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
 }
-
 
 .driver-card .card-stat .geo-bg-wrapper {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0;
 }
-
 
 .driver-card .card-stat .geo-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.15;
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.15;
 }
-
 
 .driver-card .card-stat .geo-bg svg {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 140%;
-    height: 140%;
-    transform: translate(-50%, -50%) scale(2);
-    transform-origin: center center;
-    will-change: transform, opacity;
-    transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .4s;
-    display: block;
-    preserveAspectRatio: xMidYMid slice;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 140%;
+	height: 140%;
+	transform: translate(-50%, -50%) scale(2);
+	transform-origin: center center;
+	will-change: transform, opacity;
+	transition:
+		transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+		opacity 0.4s;
+	display: block;
+	preserveAspectRatio: xMidYMid slice;
 }
-
 
 .driver-card .card-stat .geo-bg svg path {
-    fill: rgba(0, 0, 0, 1) !important;
+	fill: rgba(0, 0, 0, 1) !important;
 }
-
 
 .driver-card .card-stat:hover .geo-bg svg,
 .driver-card .card-stat:focus-within .geo-bg svg {
-    transform: translate(-50%, -50%) scale(1.2);
+	transform: translate(-50%, -50%) scale(1.2);
 }
 
 .driver-card .card-stat .geo-bg-wrapper {
-    z-index: 0; pointer-events: none;
+	z-index: 0;
+	pointer-events: none;
 }
 
 .card-stat > :not(.geo-bg-wrapper) {
-    position: relative;
-    z-index: 2;
+	position: relative;
+	z-index: 2;
 }
 
 .driver-card .card-stat .card-media {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-    z-index: 1;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-size: cover !important;
+	background-position: center top !important;
+	background-repeat: no-repeat !important;
+	z-index: 1;
 }
 
 .driver-card .team-ferrari .card-gradient {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 50%;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-    background: linear-gradient(transparent, rgba(104,8,8,1)) !important;
-    z-index: 2;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 50%;
+	background-size: cover !important;
+	background-position: center top !important;
+	background-repeat: no-repeat !important;
+	background: linear-gradient(transparent, rgba(104, 8, 8, 1)) !important;
+	z-index: 2;
 }
 
 .driver-card .team-redbull .card-gradient {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 50%;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-    background: linear-gradient(transparent, rgba(3,48,119,1)) !important;
-    z-index: 2;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 50%;
+	background-size: cover !important;
+	background-position: center top !important;
+	background-repeat: no-repeat !important;
+	background: linear-gradient(transparent, rgba(3, 48, 119, 1)) !important;
+	z-index: 2;
 }
 
 .driver-card .team-mclaren .card-gradient {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 50%;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-    background: linear-gradient(transparent, rgba(142,81,6,1)) !important;
-    z-index: 2;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 50%;
+	background-size: cover !important;
+	background-position: center top !important;
+	background-repeat: no-repeat !important;
+	background: linear-gradient(transparent, rgba(142, 81, 6, 1)) !important;
+	z-index: 2;
 }
 
 .driver-card .team-mercedes .card-gradient {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 50%;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-    background: linear-gradient(transparent, rgb(6, 120, 103)) !important;
-    z-index: 2;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 50%;
+	background-size: cover !important;
+	background-position: center top !important;
+	background-repeat: no-repeat !important;
+	background: linear-gradient(transparent, rgb(6, 120, 103)) !important;
+	z-index: 2;
 }
 
-
 .driver-card .team-williams .card-gradient {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 50%;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-    background: linear-gradient(transparent, rgb(6, 55, 122)) !important;
-    z-index: 2;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 50%;
+	background-size: cover !important;
+	background-position: center top !important;
+	background-repeat: no-repeat !important;
+	background: linear-gradient(transparent, rgb(6, 55, 122)) !important;
+	z-index: 2;
 }
 
 .driver-card .team-haas .card-gradient {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 50%;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-    background: linear-gradient(transparent, rgb(62, 62, 62)) !important;
-    z-index: 2;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 50%;
+	background-size: cover !important;
+	background-position: center top !important;
+	background-repeat: no-repeat !important;
+	background: linear-gradient(transparent, rgb(62, 62, 62)) !important;
+	z-index: 2;
 }
 
 .driver-card .team-aston .card-gradient {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 50%;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-    background: linear-gradient(transparent, rgb(23, 110, 81)) !important;
-    z-index: 2;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 50%;
+	background-size: cover !important;
+	background-position: center top !important;
+	background-repeat: no-repeat !important;
+	background: linear-gradient(transparent, rgb(23, 110, 81)) !important;
+	z-index: 2;
 }
 
 .driver-card .team-racingbulls .card-gradient {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 50%;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-    background: linear-gradient(transparent, rgb(57, 80, 138)) !important;
-    z-index: 2;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 50%;
+	background-size: cover !important;
+	background-position: center top !important;
+	background-repeat: no-repeat !important;
+	background: linear-gradient(transparent, rgb(57, 80, 138)) !important;
+	z-index: 2;
 }
 
 .driver-card .team-alpine .card-gradient {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 50%;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-    background: linear-gradient(transparent, rgb(133, 0, 142)) !important;
-    z-index: 2;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 50%;
+	background-size: cover !important;
+	background-position: center top !important;
+	background-repeat: no-repeat !important;
+	background: linear-gradient(transparent, rgb(133, 0, 142)) !important;
+	z-index: 2;
 }
 
 .driver-card .team-kick .card-gradient {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 50%;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-    background: linear-gradient(transparent, rgb(1, 90, 7)) !important;
-    z-index: 2;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 50%;
+	background-size: cover !important;
+	background-position: center top !important;
+	background-repeat: no-repeat !important;
+	background: linear-gradient(transparent, rgb(1, 90, 7)) !important;
+	z-index: 2;
 }
 
-
-
 .driver-card:hover .card-stat .card-media {
-    transform: translate(0, 20px) scale(1.1);
-    transition: transform .2s ease-in-out;
+	transform: translate(0, 20px) scale(1.1);
+	transition: transform 0.2s ease-in-out;
 }
 
 .driver-card .card-stat .driver-name {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px;
-    width: 100% !important;
-    z-index: 2;
-    margin-top: auto;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 10px;
+	width: 100% !important;
+	z-index: 2;
+	margin-top: auto;
 }
 
-.driver-card .card-stat .driver-name .fw-bold{
-    font-size: 1.1rem;
-    margin-bottom: 2px;
+.driver-card .card-stat .driver-name .fw-bold {
+	font-size: 1.1rem;
+	margin-bottom: 2px;
 }
 
-.driver-card .card-stat .driver-name .small{
-    font-size: 0.85rem;
+.driver-card .card-stat .driver-name .small {
+	font-size: 0.85rem;
 }
 
 #hero-3d {
-    height: 60vh;
-    min-height: 320px;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(180deg, #0b0b0b 0%, #1a1a1a 100%);
+	height: 60vh;
+	min-height: 320px;
+	position: relative;
+	overflow: hidden;
+	background: linear-gradient(180deg, #0b0b0b 0%, #1a1a1a 100%);
 }
 
 #f1-canvas-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
+	position: relative;
+	width: 100%;
+	height: 100%;
 }
 
 #f1-canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 
 .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 2;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, transparent 50%);
+	pointer-events: none;
+	z-index: 2;
 }
 
 .hero-caption {
-    position: absolute;
-    left: 2rem;
-    bottom: 3.5rem;
-    z-index: 3;
-    max-width: 500px;
-    pointer-events: all;
+	position: absolute;
+	left: 2rem;
+	bottom: 3.5rem;
+	z-index: 3;
+	max-width: 500px;
+	pointer-events: all;
 }
 
 #hero-3d {
-    width: 100%;
-    height: 100%;
-    min-height: 400px;
-    position: relative;
-    background-color: white !important;
+	width: 100%;
+	height: 100%;
+	min-height: 400px;
+	position: relative;
+	background-color: white !important;
 }
 
 #hero-3d canvas {
-    display: block;
-    width: 100% !important;
-    height: 100% !important;
+	display: block;
+	width: 100% !important;
+	height: 100% !important;
 }
 
 .ranking .card-stat {
-    position: relative;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    text-align: left;
+	position: relative;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	text-align: left;
 }
 
-.ranking .card-stat .card-media{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-size: 50% !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-    z-index: 1;
-    transform: translateX(20%);
+.ranking .card-stat .card-media {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-size: 50% !important;
+	background-position: center top !important;
+	background-repeat: no-repeat !important;
+	z-index: 1;
+	transform: translateX(20%);
 }
 
-.ranking:hover .card-stat .card-media{
-    transform: scale(1.2) translateY(20px);
+.ranking:hover .card-stat .card-media {
+	transform: scale(1.2) translateY(20px);
 }
 
-.ranking .card-stat .rank-overlay{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-size: cover !important;
-    z-index: 0;
-    transform: translateX(0px);
+.ranking .card-stat .rank-overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-size: cover !important;
+	z-index: 0;
+	transform: translateX(0px);
 }
 
-.ranking:hover .card-stat .rank-overlay{
-    transform: translateY(50px);
+.ranking:hover .card-stat .rank-overlay {
+	transform: translateY(50px);
 }
 
-.ranking .card-stat .card-content{
-    position: absolute;
-    left: 0;
-    margin-left: 20px;
+.ranking .card-stat .card-content {
+	position: absolute;
+	left: 0;
+	margin-left: 20px;
 }
 
-.ranking:hover .card-stat .card-content{
-    transform: translateX(-200px);
+.ranking:hover .card-stat .card-content {
+	transform: translateX(-200px);
 }
 
-.card-content .name{
-    padding-bottom: 120px;
+.card-content .name {
+	padding-bottom: 120px;
 }
 
 .team-rank .card-stat {
-    position: relative;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    text-align: left;
+	position: relative;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	text-align: left;
 }
 
-.team-rank .card-stat .card-media{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-size: 90% !important;
-    background-position: center bottom !important;
-    background-repeat: no-repeat !important;
-    z-index: 1;
+.team-rank .card-stat .card-media {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-size: 90% !important;
+	background-position: center bottom !important;
+	background-repeat: no-repeat !important;
+	z-index: 1;
 }
 
-.team-rank .card-stat .rank-overlay{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-size: 120% !important;
-    background-position: center bottom !important;
-    background-repeat: no-repeat !important;
-    z-index: 0;
+.team-rank .card-stat .rank-overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-size: 120% !important;
+	background-position: center bottom !important;
+	background-repeat: no-repeat !important;
+	z-index: 0;
 }
 
-.team-rank .card-stat .card-content-l{
-    position: absolute;
-    left: 20px;
+.team-rank .card-stat .card-content-l {
+	position: absolute;
+	left: 20px;
 }
 
-.team-rank .card-stat .card-content-r{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    margin-left: 20px;
+.team-rank .card-stat .card-content-r {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	margin-left: 20px;
 }
 
-h3.race-year{
-    color:#fff; 
-    font-weight:700; 
-    margin-bottom:1rem;
-    display: inline-block; 
-    border-bottom: 3px solid red; 
-    padding-bottom: 4px;
+h3.race-year {
+	color: #fff;
+	font-weight: 700;
+	margin-bottom: 1rem;
+	display: inline-block;
+	border-bottom: 3px solid red;
+	padding-bottom: 4px;
 }
 
-.current-venue{
-    display: flex;
-    height: 60vh;
-    width: 98%;
-    margin: auto;
-    border-radius: 12px;
-    background: url(https://raceexperiences.com/wp-content/uploads/2024/07/F1-2023-LIC-4-scaled.jpg) no-repeat center center;
-    background-position: center bottom;
-    background-size: cover;
-    background-attachment: fixed;
+.current-venue {
+	display: flex;
+	height: 60vh;
+	width: 98%;
+	margin: auto;
+	border-radius: 12px;
+	background: url(https://raceexperiences.com/wp-content/uploads/2024/07/F1-2023-LIC-4-scaled.jpg)
+		no-repeat center center;
+	background-position: center bottom;
+	background-size: cover;
+	background-attachment: fixed;
 }
 
-.venue-content{
-    position: relative;
-    left: 0;
-    margin-top: 50px;
-    margin-left: 10px;
+.venue-content {
+	position: relative;
+	left: 0;
+	margin-top: 50px;
+	margin-left: 10px;
 }
 
-.view{
-    background: white;
-    color: red;
-    border: 0px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: 600;
-    transition: 0.35s ease;
+.view {
+	background: white;
+	color: red;
+	border: 0px;
+	padding: 10px 20px;
+	border-radius: 20px;
+	font-weight: 600;
+	transition: 0.35s ease;
 }
 
-.view:hover{
-    background: red;
-    color: white;
+.view:hover {
+	background: red;
+	color: white;
 }
 
-.venue-content .book{
-    background: white;
-    color: red;
-    border: 0px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: 600;
-    transition: 0.35s ease;
+.venue-content .book {
+	background: white;
+	color: red;
+	border: 0px;
+	padding: 10px 20px;
+	border-radius: 20px;
+	font-weight: 600;
+	transition: 0.35s ease;
 }
 
-.book:hover{
-    background: red;
-    color: white;
+.book:hover {
+	background: red;
+	color: white;
 }
 
-.banner{
-    position: absolute;
-    margin-left: 10px;
-    font-size: 35px;
+.banner {
+	position: absolute;
+	margin-left: 10px;
+	font-size: 35px;
 }
 
-footer{background:#040404; color:var(--muted); padding:2rem 0; border-top:1px solid rgba(255,255,255,0.03)}
-
-@media (max-width:768px){
-    .hero-caption{
-        left:1rem;
-        right:1rem;
-        bottom:2rem
-    }
-
-    #hero-3d {
-        height: 50vh;
-        min-height: 280px;
-    }
-
-    .hero-caption {
-        left: 1rem;
-        right: 1rem;
-        bottom: 2rem;
-    }
+footer {
+	background: #040404;
+	color: var(--muted);
+	padding: 2rem 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-    .f1-table {
-      width: 68%;
-      margin: 2rem auto;
-      border-collapse: collapse;
-      background-color: #0f0f0f;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      table-layout: fixed;
-    }
+@media (max-width: 768px) {
+	.hero-caption {
+		left: 1rem;
+		right: 1rem;
+		bottom: 2rem;
+	}
 
-    .f1-table th,
-    .f1-table td {
-      text-align: center;
-      padding: 0.75rem 1rem;
-    }
+	#hero-3d {
+		height: 50vh;
+		min-height: 280px;
+	}
 
-    .f1-table thead {
-      background-color: #111;
-      text-transform: uppercase;
-      font-weight: 500;
-      font-size: 0.95rem;
-      border-bottom: 2px solid #444;
-    }
+	.hero-caption {
+		left: 1rem;
+		right: 1rem;
+		bottom: 2rem;
+	}
+}
 
-    .f1-table colgroup col:nth-child(1) { width: 80px; }   
-    .f1-table colgroup col:nth-child(2) { width: auto; }   
-    .f1-table colgroup col:nth-child(3) { width: 80px; }   
-    .f1-table colgroup col:nth-child(4) { width: auto; }  
-    .f1-table colgroup col:nth-child(5) { width: 80px; }  
-    
-    .extra {
-      display: none; 
-    }
-    button#toggle-standings {
-      display: block;
-      margin: 1rem auto;
-      padding: 0.5rem 1rem;
-      background-color: #111;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-    }
+.f1-table {
+	width: 68%;
+	margin: 2rem auto;
+	border-collapse: collapse;
+	background-color: #0f0f0f;
+	color: #fff;
+	font-family: "Inter", sans-serif;
+	table-layout: fixed;
+}
 
-    button#toggle-standings:hover {
-      background-color: #222;
-    }
+.f1-table th,
+.f1-table td {
+	text-align: center;
+	padding: 0.75rem 1rem;
+}
 
+.f1-table thead {
+	background-color: #111;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 0.95rem;
+	border-bottom: 2px solid #444;
+}
+
+.f1-table colgroup col:nth-child(1) {
+	width: 80px;
+}
+.f1-table colgroup col:nth-child(2) {
+	width: auto;
+}
+.f1-table colgroup col:nth-child(3) {
+	width: 80px;
+}
+.f1-table colgroup col:nth-child(4) {
+	width: auto;
+}
+.f1-table colgroup col:nth-child(5) {
+	width: 80px;
+}
+
+.extra {
+	display: none;
+}
+button#toggle-standings {
+	display: block;
+	margin: 1rem auto;
+	padding: 0.5rem 1rem;
+	background-color: #111;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	font-family: "Inter", sans-serif;
+	font-size: 1rem;
+}
+
+button#toggle-standings:hover {
+	background-color: #222;
+}
 
 .f1-table tbody tr {
-  border-bottom: 1px solid #222;
-  transition: background-color 0.2s;
+	border-bottom: 1px solid #222;
+	transition: background-color 0.2s;
 }
 
 .f1-table tbody tr:hover {
-  background-color: #1a1a1a;
+	background-color: #1a1a1a;
 }
 
 .f1-table tbody td {
-  padding: 0.75rem 1rem;
-  font-size: 0.9rem;
+	padding: 0.75rem 1rem;
+	font-size: 0.9rem;
 }
 
 .f1-table tbody tr[data-team="mclaren"] td:first-child {
-  border-left: 4px solid #ff8700;
+	border-left: 4px solid #ff8700;
 }
 .f1-table tbody tr[data-team="redbull"] td:first-child {
-  border-left: 4px solid #0600ef; 
+	border-left: 4px solid #0600ef;
 }
 .f1-table tbody tr[data-team="mercedes"] td:first-child {
-  border-left: 4px solid #00d2be; 
+	border-left: 4px solid #00d2be;
 }
 /* Add more teams as needed */
 .f1-table tbody td:last-child {
-  font-weight: bold;
-  text-align: right;
+	font-weight: bold;
+	text-align: right;
 }
-
