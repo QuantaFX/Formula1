@@ -38,7 +38,7 @@ export async function loadSchedule() {
 		parent.classList.add(
 			"schedule-main-item",
 			"px-3",
-			"py-5",
+			"py-4",
 			"mb-3",
 			"rounded-3",
 		);
@@ -50,9 +50,40 @@ export async function loadSchedule() {
                 </span>
             </div>
             <div class="schedule-main-caption text-white fs-3 fw-bold">${data.country_name}</div>
-            <span class="schedule-main-desc text-white-50 fw-semibold">
-                ${data.meeting_official_name}
-            </span>
+            <div class="d-flex flex-column">
+                <div class="schedule-main-desc text-white-50 fw-semibold mb-4">
+                    ${data.meeting_official_name}
+                </div>
+                <div class="d-sm-flex flex-row align-items-center py-0">
+                    <div class="placement-thumbnail rounded-3 d-flex flex-row px-3 mx-2 bg-dark">
+                        <img src="https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/1col/image.png"
+                            alt="Max Verstappen" class="rounded-circle" height="75" width="75">
+                        <div class="d-flex flex-column">
+                            <div class="text-md">1st</div>
+                            <div class="text-md">NORRIS</div>
+                            <div class="text-md">1:42:06.304</div>
+                        </div>
+                    </div>
+                    <div class="placement-thumbnail rounded-3 d-flex flex-row px-3 mx-2 bg-dark">
+                        <img src="https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/1col/image.png"
+                            alt="Max Verstappen" class="rounded-circle" height="75" width="75">
+                        <div class="d-flex flex-column">
+                            <div class="text-md">1st</div>
+                            <div class="text-md">NORRIS</div>
+                            <div class="text-md">1:42:06.304</div>
+                        </div>
+                    </div>
+                    <div class="placement-thumbnail rounded-3 d-flex flex-row px-3 mx-2 bg-dark">
+                        <img src="https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/1col/image.png"
+                            alt="Max Verstappen" class="rounded-circle" height="75" width="75">
+                        <div class="d-flex flex-column">
+                            <div class="text-md">1st</div>
+                            <div class="text-md">NORRIS</div>
+                            <div class="text-md">1:42:06.304</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         `;
 
 		container.appendChild(parent);

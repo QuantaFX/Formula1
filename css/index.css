@@ -777,11 +777,11 @@ button#toggle-standings:hover {
 	text-align: right;
 }
 
-.email input[type=email]:focus-within{
+.email input[type="email"]:focus-within {
 	outline: none;
 	color: white;
 }
 
-input[type=email]::placeholder{
+input[type="email"]::placeholder {
 	color: white;
 }

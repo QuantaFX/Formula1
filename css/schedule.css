@@ -33,3 +33,7 @@ body {
 .schedule-main-desc {
 	font-size: 0.8em;
 }
+
+.placement-thumbnail {
+	background-color: var(--muted);
+}
